@@ -95,8 +95,9 @@ body,
 #root {
   height: 100%;
   font-family: "Montserrat", sans-serif;
-  transition: all 0.3s;
   overflow: auto;
-  background-color: #444;
-  color: #fff;
+  background-color: #d4d4d4;
+  color: #444444;
+  font-weight: 500;
+  line-height: 20px;
 }

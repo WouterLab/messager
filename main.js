@@ -1,13 +1,6 @@
-import "./styles.css";
-import { setupCounter } from "./counter.js";
+import { LoginPage } from "./src/pages/LoginPage";
+import "./styles.scss";
 
 document.querySelector("#app").innerHTML = `
-  <div>
-    <h1>Hello!</h1>
-    <div class="card">
-      <button id="counter" type="button">Click</button>
-    </div>
-  </div>
+  ${LoginPage}
 `;
-
-setupCounter(document.querySelector("#counter"));
