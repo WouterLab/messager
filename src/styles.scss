@@ -1,12 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import "./src/components/Button/Button.scss";
+@import "./src/components/ButtonGhost/ButtonGhost.scss";
+@import "./src/components/Form/Form.scss";
+@import "./src/components/Input/Input.scss";
+@import "./src/pages/LoginPage/LoginPage.scss";
+@import "./src/pages/RegPage/RegPage.scss";
 
 html,
 body,
 div,
 span,
-applet,
-object,
-iframe,
 h1,
 h2,
 h3,
@@ -14,47 +17,15 @@ h4,
 h5,
 h6,
 p,
-blockquote,
-pre,
 a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
 img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
 strong,
-sub,
-sup,
-tt,
-var,
 b,
 u,
 i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
 form,
 label,
-legend,
 table,
-caption,
 tbody,
 tfoot,
 thead,
@@ -64,22 +35,12 @@ td,
 article,
 aside,
 canvas,
-details,
-embed,
-figure,
-figcaption,
 footer,
 header,
-hgroup,
 menu,
 nav,
-output,
-ruby,
 section,
-summary,
-time,
-mark,
-audio,
+input,
 video {
   margin: 0;
   padding: 0;
@@ -92,7 +53,7 @@ video {
 
 html,
 body,
-#root {
+#app {
   height: 100%;
   font-family: "Montserrat", sans-serif;
   overflow: auto;
@@ -100,4 +61,15 @@ body,
   color: #444444;
   font-weight: 500;
   line-height: 20px;
+
+  --Green: #1dad79;
+  --GreenLight: #6bdab1;
+  --Grey: #d4d4d4;
+}
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
