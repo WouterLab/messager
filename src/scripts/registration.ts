@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const fnameInput = <HTMLInputElement>document.getElementById("reg-fname");
   const snameInput = <HTMLInputElement>document.getElementById("reg-sname");
   const emailInput = <HTMLInputElement>document.getElementById("reg-email");
-  const errorMessageTag = <HTMLParagraphElement>(
-    document.getElementById("reg-message")
-  );
+  // const errorMessageTag = <HTMLParagraphElement>(
+  //   document.getElementById("reg-message")
+  // );
 
   const clearError = (inputs: HTMLInputElement[]) => {
     setTimeout(() => {
@@ -36,8 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   };
 
-  const handleclick = (e: any) => {
+  const handleclick = (e: Event) => {
     e.preventDefault();
+
     const inputsToCheck = [
       { input: loginInput, errorMessage: 'Заполните поле "Логин"' },
       { input: passwordInput, errorMessage: 'Заполните поле "Пароль"' },

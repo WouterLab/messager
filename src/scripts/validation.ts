@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
   };
 
-  const handleclick = (e: any) => {
+  const handleclick = (e: Event) => {
     e.preventDefault();
     if (loginInput.value === "") {
       loginInput.classList.add("error");
