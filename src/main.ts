@@ -14,13 +14,13 @@ interface Page {
 }
 
 const pages: Page = {
-  "": [Pages.LoginPage, {}],
+  login: [Pages.LoginPage, {}],
   reg: [Pages.RegPage, {}],
   chats: [Pages.MainPage, {}],
   404: [Pages.Page404, {}],
 };
 
-const navigate = (page: string) => {
+export const navigate = (page: string) => {
   const [source, context] = pages[page] || pages[""];
   const render = Handlebars.compile(source)(context);
   if (window.location.pathname !== "/" + page) {
@@ -35,7 +35,8 @@ const navigate = (page: string) => {
 document.addEventListener("DOMContentLoaded", () => {
   const currentRoute = document.location.pathname.slice(1);
 
-  if (pages.hasOwnProperty(document.location.pathname.slice(1))) {
+  if (currentRoute === "") navigate("login");
+  else if (pages.hasOwnProperty(document.location.pathname.slice(1))) {
     navigate(currentRoute);
   } else navigate("404");
 });
@@ -43,8 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("click", (e: MouseEvent) => {
   const target = e.target as Element;
   const page = target.getAttribute("redirect");
-
-  if (page === "login") navigate("");
 
   if (page) {
     navigate(page);

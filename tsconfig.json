@@ -13,6 +13,8 @@
       "#components/*": ["src/components/*"],
       "#constants/*": ["src/constants/*"],
       "#types/*": ["src/types/*"],
+      "#scripts/*": ["src/scripts/*"],
+      "#styles/*": ["src/styles/*"],
       "#utils/*": ["src/utils/*"]
     }
   },
