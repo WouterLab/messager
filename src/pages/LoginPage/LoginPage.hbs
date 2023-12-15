@@ -1,12 +1,14 @@
-<div class="auth">
-    {{#> Form title="Вход"}}
+{{#> AuthPage}}
+{{#> Form title="Вход" action="/main" target="_blank"}}
+<div class="formWrapper">
     <div class="formRows">
-        {{> Input placeholder="Логин"}}
-        {{> Input placeholder="Пароль"}}
+        {{> Input placeholder="Логин" name="login"}}
+        {{> Input placeholder="Пароль" name="password" type="password"}}
     </div>
     <div class="formButtons">
-        {{> Button text="Войти"}}
-        {{> ButtonGhost text="Нет аккаунта?"}}
+        {{> Submit text="Войти" redirect="chats"}}
+        {{> ButtonGhost text="Нет аккаунта?" redirect="reg"}}
     </div>
-    {{/Form}}
 </div>
+{{/Form}}
+{{/AuthPage}}

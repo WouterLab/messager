@@ -1,5 +1,19 @@
-<div class="auth">
-  {{#> Form title="Регистрация"}}
-  {{> Input}}
-  {{/Form}}
+{{#> AuthPage}}
+{{#> Form title="Регистрация"}}
+<div class="formWrapper">
+  <div class="formRows">
+    {{> Input placeholder="Почта" name="email" type="email"}}
+    {{> Input placeholder="Логин" name="login" type="phone"}}
+    {{> Input placeholder="Имя" name="first_name"}}
+    {{> Input placeholder="Фамилия" name="second_name"}}
+    {{> Input placeholder="Телефон" name="phone"}}
+    {{> Input placeholder="Пароль" name="password" type="password"}}
+    {{> Input placeholder="Пароль (ещё раз)" name="password" type="password"}}
+  </div>
+  <div class="formButtons">
+    {{> Submit text="Зарегистрировать" redirect="chats"}}
+    {{> ButtonGhost text="Уже есть аккаунт?" redirect="login"}}
+  </div>
 </div>
+{{/Form}}
+{{/AuthPage}}

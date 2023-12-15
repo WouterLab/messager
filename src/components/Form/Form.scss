@@ -11,15 +11,17 @@
   }
 
   &Rows {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 16px;
-    margin-bottom: 170px;
   }
 
   &Buttons {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 14px;
+  }
+
+  &Wrapper {
+    display: grid;
+    gap: 50px;
   }
 }
