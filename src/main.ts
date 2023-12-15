@@ -2,7 +2,7 @@ import { LoginPage } from "#pages/LoginPage";
 import Handlebars, { Template } from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
-import "./styles.scss";
+import "./styles/styles.scss";
 
 const app = document.getElementById("app");
 

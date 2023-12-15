@@ -2,13 +2,13 @@
   font-size: 14px;
   outline: none;
   border: none;
-  background-color: #fff;
+  background-color: $white;
   padding: 5px 0;
   transition: all 0.3s;
-  border-bottom: 1px solid var(--Grey);
+  border-bottom: 1px solid $grey;
 
   &:focus {
-    border-bottom: 1px solid var(--Green);
+    border-bottom: 1px solid $green;
     box-sizing: border-box;
   }
 }

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import "./mixins.scss";
+@import "./variables.scss";
 @import "./src/components/Button/Button.scss";
 @import "./src/components/ButtonGhost/ButtonGhost.scss";
 @import "./src/components/Form/Form.scss";
@@ -57,14 +59,10 @@ body,
   height: 100%;
   font-family: "Montserrat", sans-serif;
   overflow: auto;
-  background-color: #d4d4d4;
-  color: #444444;
+  background-color: $grey;
+  color: $black;
   font-weight: 500;
   line-height: 20px;
-
-  --Green: #1dad79;
-  --GreenLight: #6bdab1;
-  --Grey: #d4d4d4;
 }
 
 .auth {
