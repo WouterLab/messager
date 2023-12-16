@@ -5,7 +5,7 @@ document.addEventListener("click", (e) => {
     navigate("chat");
     const chatWindow = <HTMLDivElement>document.getElementById("chat-window");
     chatWindow.scroll({ behavior: "smooth", top: chatWindow.scrollHeight });
-    //behavior - только для наглядности пока один чат на всех
+    // behavior - только для наглядности пока один чат на всех
   };
 
   const clickedElement = e.target as Element;
