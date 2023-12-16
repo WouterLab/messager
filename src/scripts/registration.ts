@@ -27,8 +27,7 @@ document.addEventListener("click", (e) => {
   const validateField = (input: HTMLInputElement, errorMessage: string) => {
     if (input.value === "") {
       input.classList.add("error");
-
-      // errorMessage на будущее
+      console.log(errorMessage);
 
       return false;
     }
@@ -58,6 +57,20 @@ document.addEventListener("click", (e) => {
         isValid = false;
       }
     });
+
+    const regExp = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+    if (!phoneInput.value.match(regExp)) {
+      phoneInput.classList.add("error");
+      clearError(inputsToCheck.map((inputData) => inputData.input));
+      return;
+    }
+
+    if (passwordInput.value !== secondPasswordInput.value) {
+      passwordInput.classList.add("error");
+      secondPasswordInput.classList.add("error");
+      clearError(inputsToCheck.map((inputData) => inputData.input));
+      return;
+    }
 
     if (isValid) {
       navigate("chats");
