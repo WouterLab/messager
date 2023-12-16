@@ -1,0 +1,22 @@
+.message {
+  background-color: $white;
+  padding: 20px;
+  border-radius: 0 40px 40px 40px;
+  max-width: 40%;
+  min-width: 100px;
+  position: relative;
+
+  &Wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &Info {
+    position: absolute;
+    font-size: 10px;
+    text-align: end;
+    right: 20px;
+    bottom: 10px;
+  }
+}

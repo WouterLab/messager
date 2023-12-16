@@ -36,14 +36,10 @@ document.addEventListener("click", (e) => {
     }
   };
 
-  const element = e.target as Element;
+  const clickedElement = e.target as Element;
 
-  if (element) {
-    if (
-      element.hasAttribute("type") &&
-      element.getAttribute("type") === "submit" &&
-      element.getAttribute("id") === "auth-submit"
-    ) {
+  if (clickedElement) {
+    if (clickedElement.getAttribute("id") === "auth-submit") {
       e.preventDefault();
       handleclick(e);
     }

@@ -1,0 +1,19 @@
+<div class="chatWindow">
+    <div class="chatWindowHeader">
+        <div class="chatWindowHeaderUser">
+            <img src={{profile}} alt="user">
+            <div>{{name}}</div>
+        </div>
+        <div class="chatWindowHeaderProps">
+            <img src="src/assets/props.svg" alt="properties">
+        </div>
+    </div>
+    <div class="chatWindowMessages">{{> @partial-block}}</div>
+    <div class="chatWindowInputs">
+        <img class="chatWindowInputsAttach" src="src/assets/attach.svg" alt="attach">
+        {{> ChatInput}}
+        <div class="chatWindowInputsSend">
+            <img src="src/assets/arrow.svg" alt="send">
+        </div>
+    </div>
+</div>

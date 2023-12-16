@@ -1,16 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 @import "./mixins.scss";
 @import "./variables.scss";
+
 @import "./src/components/Button/Button.scss";
 @import "./src/components/ButtonGhost/ButtonGhost.scss";
 @import "./src/components/Form/Form.scss";
 @import "./src/components/AuthPage/AuthPage.scss";
 @import "./src/components/Input/Input.scss";
+@import "./src/components/Logo/Logo.scss";
+@import "./src/components/Chat/Chat.scss";
+@import "./src/components/Sidebar/Sidebar.scss";
+@import "./src/components/Search/Search.scss";
+@import "./src/components/Layout/Layout.scss";
+@import "./src/components/ChatWindow/ChatWindow.scss";
+@import "./src/components/ChatInput/ChatInput.scss";
+@import "./src/components/Message/Message.scss";
+@import "./src/components/MyMessage/MyMessage.scss";
+
 @import "./src/pages/LoginPage/LoginPage.scss";
 @import "./src/pages/RegPage/RegPage.scss";
 @import "./src/pages/MainPage/MainPage.scss";
+@import "./src/pages/ChatPage/ChatPage.scss";
 @import "./src/pages/Page404/Page404.scss";
-@import "./src/components/Logo/Logo.scss";
 
 html,
 body,
@@ -67,4 +78,18 @@ body,
   color: $black;
   font-weight: 500;
   line-height: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 5px;
+  outline: 2px solid lightgray;
 }

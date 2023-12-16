@@ -17,6 +17,7 @@ const pages: Page = {
   login: [Pages.LoginPage, {}],
   reg: [Pages.RegPage, {}],
   chats: [Pages.MainPage, {}],
+  chat: [Pages.ChatPage, {}],
   404: [Pages.Page404, {}],
 };
 
