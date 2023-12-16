@@ -3,8 +3,7 @@ import { navigate } from "src/main";
 const defaultLogin = "user";
 const defaultPassword = "user";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const authForm = <HTMLFormElement>document.getElementById("auth-form");
+document.addEventListener("click", (e) => {
   const loginInput = <HTMLInputElement>document.getElementById("auth-login");
   const passwordInput = <HTMLInputElement>(
     document.getElementById("auth-password")
@@ -37,7 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  if (authForm) {
-    authForm.addEventListener("submit", handleclick);
+  const element = e.target as Element;
+
+  if (element) {
+    if (
+      element.hasAttribute("type") &&
+      element.getAttribute("type") === "submit" &&
+      element.getAttribute("id") === "auth-submit"
+    ) {
+      e.preventDefault();
+      handleclick(e);
+    }
   }
 });

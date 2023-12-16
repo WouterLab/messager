@@ -1,7 +1,6 @@
 import { navigate } from "src/main";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const regForm = <HTMLFormElement>document.getElementById("reg-form");
+document.addEventListener("click", (e) => {
   const loginInput = <HTMLInputElement>document.getElementById("reg-login");
   const passwordInput = <HTMLInputElement>(
     document.getElementById("reg-password")
@@ -67,7 +66,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  if (regForm) {
-    regForm.addEventListener("submit", handleclick);
+  const element = e.target as Element;
+
+  if (element) {
+    if (
+      element.hasAttribute("type") &&
+      element.getAttribute("type") === "submit" &&
+      element.getAttribute("id") === "reg-submit"
+    ) {
+      e.preventDefault();
+      handleclick(e);
+    }
   }
 });
