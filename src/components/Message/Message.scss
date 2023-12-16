@@ -1,7 +1,7 @@
 .message {
   background-color: $white;
-  padding: 20px;
-  border-radius: 0 40px 40px 40px;
+  padding: 16px 20px;
+  border-radius: 0 10px 10px 10px;
   max-width: 40%;
   min-width: 100px;
   position: relative;
@@ -10,6 +10,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 20px;
   }
 
   &Info {

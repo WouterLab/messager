@@ -12,3 +12,4 @@ export { ChatWindow } from "./ChatWindow";
 export { ChatInput } from "./ChatInput";
 export { Message } from "./Message";
 export { MyMessage } from "./MyMessage";
+export { ImageMessage } from "./ImageMessage";

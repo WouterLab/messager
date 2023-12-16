@@ -42,9 +42,9 @@
   }
 
   &Messages {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    height: 100%;
+    padding: 20px 10px 10px 0;
+    overflow-y: auto;
   }
 
   &Inputs {
