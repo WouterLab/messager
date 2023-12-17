@@ -4,5 +4,5 @@ export { MainPage } from "./MainPage";
 export { Page404 } from "./Page404";
 export { ChatPage } from "./ChatPage";
 export { ProfilePage } from "./ProfilePage";
-export { ChangeInfoPage } from "./ChangeInfoPage";
-export { ChangePassPage } from "./ChangePassPage";
+export { EditInfoPage } from "./EditInfoPage";
+export { EditPassPage } from "./EditPassPage";

@@ -19,8 +19,8 @@
 @import "./src/components/ImageMessage/ImageMessage.scss";
 @import "./src/components/Divider/Divider.scss";
 @import "./src/components/ProfileInfo/ProfileInfo.scss";
-@import "./src/components/ProfileChangeInfo/ProfileChangeInfo.scss";
-@import "./src/components/ProfileChangePassword/ProfileChangePassword.scss";
+@import "./src/components/ProfileEditInfo/ProfileEditInfo.scss";
+@import "./src/components/ProfileEditPassword/ProfileEditPassword.scss";
 @import "./src/components/ModalVariant/ModalVariant.scss";
 @import "./src/components/ModalSmall/ModalSmall.scss";
 
@@ -30,8 +30,8 @@
 @import "./src/pages/ChatPage/ChatPage.scss";
 @import "./src/pages/Page404/Page404.scss";
 @import "./src/pages/ProfilePage/ProfilePage.scss";
-@import "./src/pages/ChangeInfoPage/ChangeInfoPage.scss";
-@import "./src/pages/ChangePassPage/ChangePassPage.scss";
+@import "./src/pages/EditInfoPage/EditInfoPage.scss";
+@import "./src/pages/EditPassPage/EditPassPage.scss";
 
 html,
 body,

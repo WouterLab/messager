@@ -20,8 +20,8 @@ const pages: Page = {
   chat: [Pages.ChatPage, {}],
   404: [Pages.Page404, {}],
   profile: [Pages.ProfilePage, {}],
-  "change-info": [Pages.ChangeInfoPage, {}],
-  "change-pass": [Pages.ChangePassPage, {}],
+  "edit-info": [Pages.EditInfoPage, {}],
+  "edit-pass": [Pages.EditPassPage, {}],
 };
 
 export const navigate = (page: string) => {
