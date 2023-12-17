@@ -1,0 +1,14 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 800px;
+
+  &Wrapper {
+    background-color: $grey-light;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

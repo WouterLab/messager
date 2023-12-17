@@ -13,3 +13,5 @@ export { ChatInput } from "./ChatInput";
 export { Message } from "./Message";
 export { MyMessage } from "./MyMessage";
 export { ImageMessage } from "./ImageMessage";
+export { ProfileInfo } from "./ProfileInfo";
+export { Divider } from "./Divider";

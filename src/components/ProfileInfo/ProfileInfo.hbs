@@ -1,0 +1,32 @@
+<div class="profileInfo">
+    <div class="profileInfoTop">
+        <img src="{{img}}" alt="profile" class="profileInfoImg">
+        <div>{{displayed}}</div>
+    </div>
+    <div class="profileInfoRows">
+        <div class="profileInfoRow">
+            <span class="profileInfoRowTitle">Почта</span>
+            <span class="grey">{{email}}</span>
+        </div>
+        {{> Divider}}
+        <div class="profileInfoRow">
+            <span class="profileInfoRowTitle">Имя</span>
+            <span class="grey">{{fname}}</span>
+        </div>
+        {{> Divider}}
+        <div class="profileInfoRow">
+            <span class="profileInfoRowTitle">Фамилия</span>
+            <span class="grey">{{lname}}</span>
+        </div>
+        {{> Divider}}
+        <div class="profileInfoRow">
+            <span class="profileInfoRowTitle">Отображаемое имя</span>
+            <span class="grey">{{displayed}}</span>
+        </div>
+        {{> Divider}}
+        <div class="profileInfoRow">
+            <span class="profileInfoRowTitle">Телефон</span>
+            <span class="grey">{{phone}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+.profileInfo {
+  margin-bottom: 50px;
+
+  &Top {
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &Img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+  &Rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &Row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &Title {
+      font-weight: 600;
+    }
+  }
+}

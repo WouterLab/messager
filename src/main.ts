@@ -19,6 +19,7 @@ const pages: Page = {
   chats: [Pages.MainPage, {}],
   chat: [Pages.ChatPage, {}],
   404: [Pages.Page404, {}],
+  profile: [Pages.Profile, {}],
 };
 
 export const navigate = (page: string) => {
