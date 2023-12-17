@@ -19,7 +19,9 @@ const pages: Page = {
   chats: [Pages.MainPage, {}],
   chat: [Pages.ChatPage, {}],
   404: [Pages.Page404, {}],
-  profile: [Pages.Profile, {}],
+  profile: [Pages.ProfilePage, {}],
+  "change-info": [Pages.ChangeInfoPage, {}],
+  "change-pass": [Pages.ChangePassPage, {}],
 };
 
 export const navigate = (page: string) => {
@@ -40,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentRoute === "") navigate("login");
   else if (pages.hasOwnProperty(document.location.pathname.slice(1))) {
     navigate(currentRoute);
+    if (currentRoute === "chat") {
+      const chatWindow = <HTMLDivElement>document.getElementById("chat-window");
+      chatWindow.scroll({ behavior: "smooth", top: chatWindow.scrollHeight });
+    }
   } else navigate("404");
 });
 

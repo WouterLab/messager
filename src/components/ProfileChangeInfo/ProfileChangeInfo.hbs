@@ -2,17 +2,13 @@
     <div class="profileInfoTop">
         <div class="profileInfoImg">
             <img src="{{img}}" alt="profile">
-            <div class="profileInfoImgHover">
-                <span>Новое фото</span>
-            </div>
-            <input class="profileInfoImgFile" type="file" name="avatar" />
         </div>
         <div>{{displayed}}</div>
     </div>
     <div class="profileInfoRows">
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Почта</span>
-            <span class="grey">{{email}}</span>
+            <input class="inputProfile grey" value="{{email}}" type="text" name="email" />
         </div>
         {{> Divider}}
         <div class="profileInfoRow">
@@ -22,22 +18,22 @@
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Имя</span>
-            <span class="grey">{{fname}}</span>
+            <input class="inputProfile grey" value="{{fname}}" type="text" name="first_name" />
         </div>
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Фамилия</span>
-            <span class="grey">{{lname}}</span>
+            <input class="inputProfile grey" value="{{lname}}" type="text" name="second_name" />
         </div>
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Отображаемое имя</span>
-            <span class="grey">{{displayed}}</span>
+            <input class="inputProfile grey" value="{{displayed}}" type="text" name="displayed" />
         </div>
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Телефон</span>
-            <span class="grey">{{phone}}</span>
+            <input class="inputProfile grey" value="{{phone}}" type="text" name="phone" />
         </div>
     </div>
 </div>

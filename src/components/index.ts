@@ -15,3 +15,7 @@ export { MyMessage } from "./MyMessage";
 export { ImageMessage } from "./ImageMessage";
 export { ProfileInfo } from "./ProfileInfo";
 export { Divider } from "./Divider";
+export { ProfileChangeInfo } from "./ProfileChangeInfo";
+export { ProfileChangePassword } from "./ProfileChangePassword";
+export { ModalVariant } from "./ModalVariant";
+export { ModalSmall } from "./ModalSmall";

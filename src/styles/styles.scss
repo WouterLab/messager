@@ -19,13 +19,19 @@
 @import "./src/components/ImageMessage/ImageMessage.scss";
 @import "./src/components/Divider/Divider.scss";
 @import "./src/components/ProfileInfo/ProfileInfo.scss";
+@import "./src/components/ProfileChangeInfo/ProfileChangeInfo.scss";
+@import "./src/components/ProfileChangePassword/ProfileChangePassword.scss";
+@import "./src/components/ModalVariant/ModalVariant.scss";
+@import "./src/components/ModalSmall/ModalSmall.scss";
 
 @import "./src/pages/LoginPage/LoginPage.scss";
 @import "./src/pages/RegPage/RegPage.scss";
 @import "./src/pages/MainPage/MainPage.scss";
 @import "./src/pages/ChatPage/ChatPage.scss";
 @import "./src/pages/Page404/Page404.scss";
-@import "./src/pages/Profile/Profile.scss";
+@import "./src/pages/ProfilePage/ProfilePage.scss";
+@import "./src/pages/ChangeInfoPage/ChangeInfoPage.scss";
+@import "./src/pages/ChangePassPage/ChangePassPage.scss";
 
 html,
 body,
@@ -96,4 +102,69 @@ body,
   background-color: lightgray;
   border-radius: 5px;
   outline: 1px solid lightgray;
+}
+
+.noClick {
+  pointer-events: none;
+  cursor: default;
+}
+
+.inputProfile {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  transition: all 0.3s;
+  text-align: end;
+  color: $black;
+
+  &[type="password"] {
+    font-family: Verdana;
+  }
+
+  &Error {
+    color: $red;
+  }
+}
+
+.pos-top {
+  top: -170px;
+  left: 0;
+}
+
+.pos-bottom {
+  bottom: -135px;
+  right: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.showAnimation {
+  animation: show 0.3s ease-in;
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.hideAnimation {
+  animation: hide 0.3s ease-in;
+
+  @keyframes hide {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
 }
