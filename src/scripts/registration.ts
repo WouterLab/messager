@@ -12,6 +12,7 @@ document.addEventListener("click", (e) => {
   const fnameInput = <HTMLInputElement>document.getElementById("reg-fname");
   const snameInput = <HTMLInputElement>document.getElementById("reg-sname");
   const emailInput = <HTMLInputElement>document.getElementById("reg-email");
+
   // const errorMessageTag = <HTMLParagraphElement>(
   //   document.getElementById("reg-message")
   // );
@@ -50,11 +51,11 @@ document.addEventListener("click", (e) => {
       { input: emailInput, errorMessage: 'Заполните поле "Почта"' },
     ];
 
-    let isValid = true;
+    let isValid = false;
 
     inputsToCheck.forEach((inputData) => {
-      if (!validateField(inputData.input, inputData.errorMessage)) {
-        isValid = false;
+      if (validateField(inputData.input, inputData.errorMessage)) {
+        isValid = true;
       }
     });
 
