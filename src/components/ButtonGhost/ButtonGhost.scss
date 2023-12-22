@@ -1,0 +1,27 @@
+.ghost {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: fit-content;
+  padding: 0;
+  color: $green;
+  font-size: 16px;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $green-light;
+  }
+
+  &:active {
+    color: $grey;
+  }
+}
+
+.red {
+  color: $red;
+
+  &:hover {
+    color: $red-light;
+  }
+}

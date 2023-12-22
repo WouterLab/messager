@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "#pages/*": ["src/pages/*"],
+      "#components/*": ["src/components/*"],
+      "#constants/*": ["src/constants/*"],
+      "#types/*": ["src/types/*"],
+      "#scripts/*": ["src/scripts/*"],
+      "#styles/*": ["src/styles/*"],
+      "#utils/*": ["src/utils/*"]
+    }
+  },
+  "include": ["src", "src/types/index.d.ts"]
+}

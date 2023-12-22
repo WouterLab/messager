@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
-import handlebars from "vite-plugin-handlebars";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [handlebars()],
+  plugins: [tsconfigPaths()],
 });

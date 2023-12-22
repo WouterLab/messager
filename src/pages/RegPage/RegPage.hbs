@@ -1,0 +1,20 @@
+{{#> AuthPage}}
+{{#> Form title="Вход" action="" method="POST" id="reg-form"}}
+<div class="formWrapper reg">
+  <div class="formRows">
+    {{> Input placeholder="Почта" name="email" type="email" id="reg-email"}}
+    {{> Input placeholder="Логин" name="login" id="reg-login"}}
+    {{> Input placeholder="Имя" name="first_name" id="reg-fname"}}
+    {{> Input placeholder="Фамилия" name="second_name" id="reg-sname"}}
+    {{> Input placeholder="Телефон" name="phone" type="phone" id="reg-phone"}}
+    {{> Input placeholder="Пароль" name="password" type="password" id="reg-password"}}
+    {{> Input placeholder="Пароль (ещё раз)" name="password" type="password" id="reg-s-password"}}
+  </div>
+  <p class="errorMessage" id="reg-message"></p>
+  <div class="formButtons">
+    {{> Button text="Зарегистрировать" type="submit" id="reg-submit"}}
+    {{> ButtonGhost text="Уже есть аккаунт?" redirect="login"}}
+  </div>
+</div>
+{{/Form}}
+{{/AuthPage}}

@@ -1,0 +1,31 @@
+.sidebar {
+  background-color: $white;
+  height: 100%;
+  width: 400px;
+  min-width: 400px;
+  padding: 0 5px 10px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &Top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &Profile {
+    font-size: 14px;
+    color: $grey-dark;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $green;
+    }
+  }
+
+  &Controls {
+    padding: 0 10px;
+  }
+}
