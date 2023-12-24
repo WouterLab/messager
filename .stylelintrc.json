@@ -1,8 +1,7 @@
 {
   "extends": "stylelint-config-standard-scss",
   "rules": {
-    "color-hex-case": "lower",
-    "scss/at-import-partial-extension-blacklist": [""]
+    "color-hex-case": "lower"
   },
   "ignoreFiles": ["build/*"]
 }
