@@ -15,7 +15,12 @@
       "#scripts/*": ["src/scripts/*"],
       "#styles/*": ["src/styles/*"],
       "#utils/*": ["src/utils/*"]
-    }
+    },
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true
   },
   "include": ["src", "src/types/index.d.ts"]
 }
