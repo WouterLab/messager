@@ -14,7 +14,8 @@
       "#types/*": ["src/types/*"],
       "#scripts/*": ["src/scripts/*"],
       "#styles/*": ["src/styles/*"],
-      "#utils/*": ["src/utils/*"]
+      "#utils/*": ["src/utils/*"],
+      "#core/*": ["src/core/*"]
     },
     "noImplicitAny": true,
     "noUnusedLocals": true,
