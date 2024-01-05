@@ -1,1 +1,1 @@
-export { default as RegPage } from "./RegPage.hbs?raw";
+export { RegPage } from "./RegPage";

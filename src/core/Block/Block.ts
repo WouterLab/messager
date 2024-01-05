@@ -2,17 +2,23 @@ import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 import { EventBus } from "src/core/EventBus/EventBus";
 
-export type RefType = {
-  [key: string]: Element | Block<object>;
-};
-
-export interface BlockClass<P extends object, R extends RefType>
-  extends Function {
-  new (props: P): Block<P, R>;
-  componentName?: string;
+interface Props {
+  events?: Record<string, () => void>;
 }
 
-class Block<Props extends object, Refs extends RefType = RefType> {
+interface Refs {
+  [key: string]: unknown;
+}
+
+interface ChildBlock {
+  id: string;
+  dispatchComponentDidMount: () => void;
+  getContent: () => Element | null;
+}
+
+type Children = ChildBlock[];
+
+class Block {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -23,12 +29,12 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   public id = nanoid(6);
   protected props: Props;
-  protected refs: Refs = {} as Refs;
-  private children: Block<object>[] = [];
+  protected refs: Refs = {};
+  private children: Children = [];
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props) {
+  constructor(props: Props = {}) {
     const eventBus = new EventBus();
 
     this.props = this._makePropsProxy(props);

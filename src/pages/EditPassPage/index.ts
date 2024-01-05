@@ -1,1 +1,1 @@
-export { default as EditPassPage } from "./EditPassPage.hbs?raw";
+export { EditPassPage } from "./EditPassPage";
