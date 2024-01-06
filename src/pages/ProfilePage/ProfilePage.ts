@@ -1,11 +1,21 @@
 import Block from "#core/Block/Block";
-import template from "./ProfilePage.hbs?raw";
 
 export class ProfilePage extends Block {
-  constructor() {
-    super({});
-  }
   protected render(): string {
-    return template;
+    return `<div class="profileWrapper">
+    <img src="assets/back.svg" redirect="chats" alt="return-back" class="backArrow">
+    <div class="profile">
+        {{> ProfileInfo img="assets/dog2.jpg" name="Danil" email="mail@mail.ru" login="boymep" fname="Danil"
+        lname="Panov"
+        displayed="Boymep"
+        phone="+7 (999) 999 99 99"}}
+        {{> ButtonGhost id="change-info" redirect="edit-info" text="Изменить данные"}}
+        {{> Divider}}
+        {{> ButtonGhost id="change-pass" redirect="edit-pass" text="Изменить пароль"}}
+        {{> Divider}}
+        {{> ButtonGhost text="Выйти" redirect="login" class="red"}}
+    </div>
+    <div class="profileLogo">{{> Logo}}</div>
+</div>`;
   }
 }

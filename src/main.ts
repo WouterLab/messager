@@ -1,17 +1,28 @@
-import Handlebars, { Template } from "handlebars";
 import * as Components from "./components";
+import * as Pages from "./pages";
 import "./styles/styles.scss";
 import { navigate } from "#core/navigate";
 import { pages } from "#constants/constants";
+import { registerComponent } from "#core/resgiterComponent";
+import Handlebars, { Template } from "handlebars";
+import { PagesUrls } from "#types/types";
 
 Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component as Template<any>);
+  if (typeof component === "string") {
+    Handlebars.registerPartial(name, component as Template<any>);
+  } else registerComponent(name, component);
 });
+
+Object.entries(Pages).forEach(([name, component]) => {
+  registerComponent(name, component);
+});
+
+const defaultRoot = PagesUrls.MainPage;
 
 document.addEventListener("DOMContentLoaded", () => {
   const currentRoute = document.location.pathname.slice(1);
 
-  if (currentRoute === "") navigate("login");
+  if (currentRoute === "") navigate(defaultRoot);
   else if (pages.hasOwnProperty(document.location.pathname.slice(1))) {
     navigate(currentRoute);
     if (currentRoute === "chat") {

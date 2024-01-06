@@ -1,17 +1,19 @@
-import Block from "#core/Block/Block";
+import { Page } from "#types/types";
 import * as Pages from "../pages";
 
-interface Page {
-  [key: string]: new () => Block;
-}
+let pages: Page = {};
 
-export const pages: Page = {
-  login: Pages.LoginPage,
-  reg: Pages.RegPage,
-  chats: Pages.MainPage,
-  chat: Pages.ChatPage,
-  404: Pages.Page404,
-  profile: Pages.ProfilePage,
-  "edit-info": Pages.EditInfoPage,
-  "edit-pass": Pages.EditPassPage,
-};
+document.addEventListener("DOMContentLoaded", () => {
+  pages = {
+    login: Pages.LoginPage,
+    reg: Pages.RegPage,
+    chats: Pages.MainPage,
+    chat: Pages.ChatPage,
+    404: Pages.Page404,
+    profile: Pages.ProfilePage,
+    "edit-info": Pages.EditInfoPage,
+    "edit-pass": Pages.EditPassPage,
+  };
+});
+
+export { pages };

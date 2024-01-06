@@ -3,11 +3,21 @@ import Handlebars from "handlebars";
 import { EventBus } from "src/core/EventBus/EventBus";
 
 interface Props {
-  events?: Record<string, () => void>;
+  [key: string]: any;
+}
+
+export interface RefElement {
+  value: string;
+  classList: {
+    add: any;
+    remove: any;
+  };
 }
 
 interface Refs {
-  [key: string]: unknown;
+  [key: string]: {
+    element: RefElement;
+  };
 }
 
 interface ChildBlock {

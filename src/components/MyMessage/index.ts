@@ -1,1 +1,1 @@
-export { default as MyMessage } from "./MyMessage.hbs?raw";
+export { MyMessage } from "./MyMessage";

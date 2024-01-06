@@ -1,11 +1,11 @@
 import Block from "#core/Block/Block";
-import template from "./Page404.hbs?raw";
 
 export class Page404 extends Block {
-  constructor() {
-    super({});
-  }
   protected render(): string {
-    return template;
+    return `{{#> AuthPage}}
+    {{#> Form title="404"}}
+    <div class="page404">Страница не найдена</div>
+    {{/Form}}
+    {{/AuthPage}}`;
   }
 }

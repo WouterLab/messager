@@ -1,4 +1,9 @@
-<div class="profileInfo">
+import Block from "#core/Block/Block";
+
+export class ProfileEditPassword extends Block {
+  protected render(): string {
+    return `
+    <div class="profileInfo">
     <div class="profileInfoTop">
         <div class="profileInfoImg noClick">
             <img src="{{img}}" alt="profile-image">
@@ -22,3 +27,6 @@
         </div>
     </div>
 </div>
+    `;
+  }
+}

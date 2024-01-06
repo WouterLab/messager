@@ -1,1 +1,1 @@
-export { default as ModalVariant } from "./ModalVariant.hbs?raw";
+export { ModalVariant } from "./ModalVariant";

@@ -1,1 +1,1 @@
-export { default as ImageMessage } from "./ImageMessage.hbs?raw";
+export { ImageMessage } from "./ImageMessage";

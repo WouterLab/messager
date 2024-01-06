@@ -1,11 +1,14 @@
 import Block from "#core/Block/Block";
-import template from "./EditPassPage.hbs?raw";
 
 export class EditPassPage extends Block {
-  constructor() {
-    super({});
-  }
   protected render(): string {
-    return template;
+    return `<div class="changePassWrapper">
+    <img src="assets/back.svg" redirect="profile" alt="return-back" class="backArrow">
+    <div class="changePass">
+        {{> ProfileEditPassword img="assets/dog2.jpg" displayed="Boymep"}}
+        <div class="changeInfoSave">{{> Button redirect="profile" text="Сохранить"}}</div>
+    </div>
+    <div class="changePassLogo">{{> Logo}}</div>
+</div>`;
   }
 }

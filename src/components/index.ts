@@ -19,3 +19,4 @@ export { ProfileEditInfo } from "./ProfileEditInfo";
 export { ProfileEditPassword } from "./ProfileEditPassword";
 export { ModalVariant } from "./ModalVariant";
 export { ModalSmall } from "./ModalSmall";
+export { ChatList } from "./ChatList";
