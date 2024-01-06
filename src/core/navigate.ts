@@ -1,8 +1,4 @@
-import * as Pages from "../pages";
-
-const pages = {
-  login: Pages.LoginPage,
-};
+import { pages } from "#constants/constants";
 
 export function navigate(page: string) {
   const app = document.getElementById("app");

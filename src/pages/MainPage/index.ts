@@ -1,1 +1,1 @@
-export { default as MainPage } from "./MainPage.hbs?raw";
+export { MainPage } from "./MainPage";

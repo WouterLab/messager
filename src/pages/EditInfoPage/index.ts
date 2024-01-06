@@ -1,1 +1,1 @@
-export { default as EditInfoPage } from "./EditInfoPage.hbs?raw";
+export { EditInfoPage } from "./EditInfoPage";

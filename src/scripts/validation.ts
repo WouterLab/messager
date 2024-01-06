@@ -1,4 +1,4 @@
-import { navigate } from "src/main";
+import { navigate } from "#core/navigate";
 
 const defaultLogin = "user";
 const defaultPassword = "user";

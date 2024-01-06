@@ -1,4 +1,4 @@
-import { navigate } from "src/main";
+import { navigate } from "#core/navigate";
 
 document.addEventListener("click", (e) => {
   const loginInput = <HTMLInputElement>document.getElementById("reg-login");
