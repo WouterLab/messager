@@ -1,5 +1,6 @@
 import { RefElement } from "#core/Block/Block";
 import { navigate } from "#core/navigate";
+import { PagesUrls } from "#types/types";
 
 export const registration = (
   loginInput: RefElement,
@@ -50,6 +51,7 @@ export const registration = (
   });
 
   const emailRegExp =
+    // eslint-disable-next-line max-len
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!emailInput.value.match(emailRegExp)) {
     emailInput.classList.add("error");
@@ -72,7 +74,7 @@ export const registration = (
   }
 
   if (isValid) {
-    navigate("chats");
+    navigate(PagesUrls.MainPage);
   } else {
     clearError(inputsToCheck.map((inputData) => inputData.input));
   }

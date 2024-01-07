@@ -19,3 +19,4 @@ export { ModalVariant } from "./ModalVariant";
 export { ModalSmall } from "./ModalSmall";
 export { ChatList } from "./ChatList";
 export { MessageList } from "./MessageList";
+export { SidebarButton } from "./SidebarButton";

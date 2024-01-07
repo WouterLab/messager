@@ -40,7 +40,7 @@ class Block {
   public id = nanoid(6);
   protected props: Props;
   protected refs: Refs = {};
-  private children: Children = [];
+  protected children: Children = [];
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 

@@ -1,13 +1,14 @@
 import Block from "#core/Block/Block";
 import { navigate } from "#core/navigate";
 import { validation } from "#scripts/validation";
+import { PagesUrls } from "#types/types";
 
 export class LoginPage extends Block {
   constructor() {
     super({
       onSignUp: (e: Event) => {
         e.preventDefault();
-        navigate("reg");
+        navigate(PagesUrls.RegPage);
       },
       onLogin: (e: Event) => {
         e.preventDefault();

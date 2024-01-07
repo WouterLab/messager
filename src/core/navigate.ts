@@ -4,9 +4,7 @@ export function navigate(page: string) {
   const app = document.getElementById("app");
 
   if (app) {
-    let Component;
-    if (page.includes("chat/")) Component = pages.chat;
-    else Component = pages[page];
+    const Component = pages[page];
     const component = new Component();
 
     app.innerHTML = "";
@@ -14,6 +12,12 @@ export function navigate(page: string) {
     if (content) {
       app.appendChild(content);
     }
-    history.pushState({ page }, "", page);
+    const url = new URL(page, window.location.origin);
+
+    if (history.state && history.state.page === page) {
+      history.replaceState({ page }, "", url.href);
+    } else {
+      history.pushState({ page }, "", url.href);
+    }
   } else return;
 }

@@ -23,13 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentRoute = document.location.pathname.slice(1);
 
   if (currentRoute === "") navigate(defaultRoot);
-  else if (pages.hasOwnProperty(document.location.pathname.slice(1))) {
+  if (currentRoute === PagesUrls.ChatPage) {
     navigate(currentRoute);
-    if (currentRoute === "chat") {
-      const chatWindow = <HTMLDivElement>document.getElementById("chat-window");
-      chatWindow.scroll({ behavior: "smooth", top: chatWindow.scrollHeight });
-    }
-  } else navigate("404");
+    const chatWindow = <HTMLDivElement>document.getElementById("chat-window");
+    chatWindow.scroll({ behavior: "smooth", top: chatWindow.scrollHeight });
+  } else if (pages.hasOwnProperty(document.location.pathname.slice(1))) {
+    navigate(currentRoute);
+  } else navigate(PagesUrls.Page404);
 });
 
 const handlePopState = (event: PopStateEvent) => {

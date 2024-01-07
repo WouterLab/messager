@@ -1,13 +1,13 @@
 import Block from "#core/Block/Block";
 import { navigate } from "#core/navigate";
-import { ChatType } from "#types/types";
+import { ChatType, PagesUrls } from "#types/types";
 
 export class Chat extends Block {
   constructor(props: ChatType) {
     super({
       ...props,
       onChatChoose: () => {
-        navigate(`chat/${this.props.id}`);
+        navigate(PagesUrls.ChatPage);
         const chatWindow = <HTMLDivElement>(
           document.getElementById("chat-window")
         );

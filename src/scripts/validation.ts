@@ -1,5 +1,6 @@
 import { RefElement } from "#core/Block/Block";
 import { navigate } from "#core/navigate";
+import { PagesUrls } from "#types/types";
 
 const defaultLogin = "user";
 const defaultPassword = "user";
@@ -29,6 +30,6 @@ export const validation = (
     passwordInput.classList.add("error");
     clearError();
   } else {
-    navigate("chats");
+    navigate(PagesUrls.MainPage);
   }
 };

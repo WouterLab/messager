@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Block from "#core/Block/Block";
 
 export class ChatPage extends Block {

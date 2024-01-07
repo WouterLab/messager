@@ -1,13 +1,14 @@
 import Block from "#core/Block/Block";
 import { navigate } from "#core/navigate";
 import { registration } from "#scripts/registration";
+import { PagesUrls } from "#types/types";
 
 export class RegPage extends Block {
   constructor() {
     super({
       onSignIn: (e: Event) => {
         e.preventDefault();
-        navigate("login");
+        navigate(PagesUrls.LoginPage);
       },
       onReg: (e: Event) => {
         e.preventDefault();
@@ -42,7 +43,8 @@ export class RegPage extends Block {
         {{{ Input placeholder="Фамилия" name="second_name" id="reg-sname" ref="sname" }}}
         {{{ Input placeholder="Телефон" name="phone" type="phone" id="reg-phone" ref="phone" }}}
         {{{ Input placeholder="Пароль" name="password" type="password" id="reg-password" ref="password" }}}
-        {{{ Input placeholder="Пароль (ещё раз)" name="password" type="password" id="reg-s-password" ref="secPassword" }}}
+        {{{ Input placeholder="Пароль (ещё раз)" name="password" type="password" 
+        id="reg-s-password" ref="secPassword" }}}
       </div>
       <p class="errorMessage" id="reg-message"></p>
       <div class="formButtons">
