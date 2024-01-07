@@ -16,8 +16,11 @@ export enum PagesUrls {
 }
 
 export type MessageType = {
-  text: string;
+  type: "image" | "text";
+  route: "outgoing" | "incoming";
   time: string;
+  image?: string;
+  id: string;
 };
 
 export type ChatType = {

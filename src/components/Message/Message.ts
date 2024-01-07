@@ -7,14 +7,38 @@ export class Message extends Block {
   }
 
   protected render(): string {
-    const { text, time } = this.props;
+    const { text, time, route, image, type } = this.props;
 
-    return `<div class="messageWrapper">
-    <div class="message">
-        <span>${text}</span>
-        <div class="messageInfo">${time}</div>
-    </div>
-</div>
-`;
+    if (type === "image") {
+      return `<div class="imgMessageWrapper ${
+        route === "outgoing" ? "outgoing" : ""
+      }">
+      <img class="imgMessage" src="${image}" alt="image-message" />
+      <div class="imgMessageTime">${time}</div>
+      </div>
+      `;
+    } else {
+      if (route === "incoming") {
+        return `<div class="messageWrapper">
+          <div class="message">
+              <span>${text}</span>
+              <div class="messageInfo">${time}</div>
+          </div>
+          </div>
+          `;
+      } else {
+        return `
+        <div class="myMessageWrapper">
+        <div class="myMessage">
+            <span>${text}</span>
+            <div class="myMessageInfo">
+                <img class="myMessageInfoRead" src="assets/read.svg" alt="message-read">
+                <span>${time}</span>
+            </div>
+        </div>
+        </div>
+        `;
+      }
+    }
   }
 }

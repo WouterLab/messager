@@ -28,7 +28,7 @@ export class ChatWindow extends Block {
             {{/ModalSmall}}
         </div>
     </div>
-    <div class="chatWindowMessages" id="chat-window">{{> @partial-block}}</div>
+    {{{ MessageList }}}
     <div class="chatWindowInputs">
         <img class="chatWindowInputsAttach" src="assets/attach.svg" id="attach" alt="attach">
         {{#> ModalSmall id="attach-modal" class="pos-top hidden"}}

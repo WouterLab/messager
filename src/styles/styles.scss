@@ -13,8 +13,6 @@
 @import "./src/components/ChatWindow/ChatWindow";
 @import "./src/components/ChatInput/ChatInput";
 @import "./src/components/Message/Message";
-@import "./src/components/MyMessage/MyMessage";
-@import "./src/components/ImageMessage/ImageMessage";
 @import "./src/components/Divider/Divider";
 @import "./src/components/ProfileInfo/ProfileInfo";
 @import "./src/components/ProfileEditInfo/ProfileEditInfo";
@@ -22,6 +20,7 @@
 @import "./src/components/ModalVariant/ModalVariant";
 @import "./src/components/ChatList/ChatList";
 @import "./src/components/ModalSmall/ModalSmall";
+@import "./src/components/MessageList/MessageList";
 
 @import "./src/pages/LoginPage/LoginPage";
 @import "./src/pages/RegPage/RegPage";
