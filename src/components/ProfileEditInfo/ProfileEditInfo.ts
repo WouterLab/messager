@@ -1,6 +1,11 @@
 import Block from "#core/Block/Block";
+import { ProfileProps } from "#types/types";
 
 export class ProfileEditInfo extends Block {
+  constructor(props: ProfileProps) {
+    super(props);
+  }
+
   protected render(): string {
     return `
     <div class="profileInfo">

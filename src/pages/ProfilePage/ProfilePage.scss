@@ -20,12 +20,51 @@
   }
 }
 
-.backArrow {
-  transform: rotate(180deg);
-  position: fixed;
-  top: 20px;
-  left: 30px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+.changeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 800px;
+
+  &Wrapper {
+    background-color: $grey-light;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    animation: show 0.5s ease-in;
+  }
+
+  &Logo {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+  }
+
+  &Save {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.changePass {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 800px;
+
+  &Wrapper {
+    background-color: $grey-light;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    animation: show 0.5s ease-in;
+  }
+
+  &Logo {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+  }
 }

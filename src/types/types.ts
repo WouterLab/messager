@@ -31,3 +31,14 @@ export type ChatType = {
   count: string;
   id: string;
 };
+
+export type ProfileProps = {
+  image: string;
+  name: string;
+  email: string;
+  login: string;
+  fname: string;
+  lname: string;
+  displayed: string;
+  phone: string;
+};
