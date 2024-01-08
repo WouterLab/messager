@@ -6,12 +6,8 @@ interface Props {
   [key: string]: any;
 }
 
-export interface RefElement {
+export interface RefElement extends Element {
   value: string;
-  classList: {
-    add: any;
-    remove: any;
-  };
 }
 
 interface Refs {

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentRoute = document.location.pathname.slice(1);
 
   if (currentRoute === "") navigate(defaultRoot);
-  if (currentRoute === PagesUrls.ChatPage) {
+  else if (currentRoute === PagesUrls.ChatPage) {
     navigate(currentRoute);
     const chatWindow = <HTMLDivElement>document.getElementById("chat-window");
     chatWindow.scroll({ behavior: "smooth", top: chatWindow.scrollHeight });
