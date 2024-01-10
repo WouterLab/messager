@@ -2,80 +2,128 @@ import { RefElement } from "#core/Block/Block";
 import { navigate } from "#core/navigate";
 import { PagesUrls } from "#types/types";
 
+export const clearErrorMessage = (errorLabel: HTMLElement) => {
+  errorLabel.innerText = "";
+};
+
+const clearError = (inputs: RefElement[]) => {
+  setTimeout(() => {
+    inputs.forEach((input) => {
+      input.classList.remove("error");
+    });
+  }, 3000);
+};
+
+const getInputData = (input: RefElement) => {
+  switch (input.id) {
+    case "reg-email":
+      return {
+        regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        error: 'Поле "Почта" пустое, или не соответствует требованиям',
+      };
+    case "reg-login":
+      return {
+        regex: /^[a-zA-Z0-9_-]{3,20}$/,
+        error: 'Поле "Логин" пустое, или не соответствует требованиям',
+      };
+    case "reg-fname":
+      return {
+        regex: /^[А-ЯЁA-Z][а-яёa-z]*$/,
+        error: 'Поле "Имя" пустое, или не соответствует требованиям',
+      };
+    case "reg-sname":
+      return {
+        regex: /^[А-ЯЁA-Z][а-яёa-z]*$/,
+        error: 'Поле "Фамилия" пустое, или не соответствует требованиям',
+      };
+    case "reg-phone":
+      return {
+        regex: /^(\+?[0-9]{10,15})$/,
+        error: 'Поле "Телефон" пустое, или не соответствует требованиям',
+      };
+    case "reg-password":
+      return {
+        regex: /^(?=.*[A-Z])(?=.*\d).{8,40}$/,
+        error: 'Поле "Пароль" пустое, или не соответствует требованиям',
+      };
+    case "reg-s-password":
+      return {
+        regex: undefined,
+        error: "Повторите введённый пароль",
+      };
+    default:
+      return {
+        regex: undefined,
+        error: "Неизвестное поле",
+      };
+  }
+};
+
+export const validateInput = (input: RefElement): boolean => {
+  const { regex, error } = getInputData(input);
+  const errorLabel = document.getElementById("reg-message");
+
+  if (input.value === "" || (regex && !regex.test(input.value))) {
+    input.classList.add("error");
+
+    if (errorLabel && errorLabel.innerText === "") {
+      errorLabel.innerText = error;
+    }
+
+    return false;
+  } else {
+    input.classList.remove("error");
+    if (errorLabel) {
+      clearErrorMessage(errorLabel);
+    }
+  }
+
+  return true;
+};
+
 export const registration = (
-  loginInput: RefElement,
-  passwordInput: RefElement,
-  secPasswordInput: RefElement,
   emailInput: RefElement,
+  loginInput: RefElement,
   fnameInput: RefElement,
   snameInput: RefElement,
   phoneInput: RefElement,
+  passwordInput: RefElement,
+  secPasswordInput: RefElement,
 ) => {
-  const clearError = (inputs: RefElement[]) => {
-    setTimeout(() => {
-      inputs.forEach((input) => {
-        input.classList.remove("error");
-      });
-    }, 3000);
-  };
-
-  const validateField = (input: RefElement, errorMessage: string) => {
-    if (input.value === "") {
-      input.classList.add("error");
-      console.log(errorMessage);
-
-      return false;
-    }
-    return true;
-  };
-
   const inputsToCheck = [
-    { input: loginInput, errorMessage: 'Заполните поле "Логин"' },
-    { input: passwordInput, errorMessage: 'Заполните поле "Пароль"' },
-    {
-      input: secPasswordInput,
-      errorMessage: "Повторите введённый пароль",
-    },
-    { input: phoneInput, errorMessage: 'Заполните поле "Телефон"' },
-    { input: fnameInput, errorMessage: 'Заполните поле "Имя"' },
-    { input: snameInput, errorMessage: 'Заполните поле "Фамилия"' },
-    { input: emailInput, errorMessage: 'Заполните поле "Почта"' },
+    emailInput,
+    loginInput,
+    fnameInput,
+    snameInput,
+    phoneInput,
+    passwordInput,
+    secPasswordInput,
   ];
+  const errorLabel = document.getElementById("reg-message");
 
-  let isValid = false;
+  let isValid = true;
 
-  inputsToCheck.forEach((inputData) => {
-    if (validateField(inputData.input, inputData.errorMessage)) {
-      isValid = true;
+  inputsToCheck.forEach((input) => {
+    if (!validateInput(input)) {
+      isValid = false;
     }
   });
-
-  const emailRegExp =
-    // eslint-disable-next-line max-len
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (!emailInput.value.match(emailRegExp)) {
-    emailInput.classList.add("error");
-    clearError(inputsToCheck.map((inputData) => inputData.input));
-    return;
-  }
-
-  const phoneRegExp = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
-  if (!phoneInput.value.match(phoneRegExp)) {
-    phoneInput.classList.add("error");
-    clearError(inputsToCheck.map((inputData) => inputData.input));
-    return;
-  }
 
   if (passwordInput.value !== secPasswordInput.value) {
     passwordInput.classList.add("error");
     secPasswordInput.classList.add("error");
-    clearError(inputsToCheck.map((inputData) => inputData.input));
+    if (errorLabel) {
+      errorLabel.innerText = "Пароли не совпадают";
+    }
+    clearError(inputsToCheck);
     return;
   }
 
   if (isValid) {
+    inputsToCheck.forEach((input) => console.log(input.value));
+
     navigate(PagesUrls.MainPage);
   } else {
-    clearError(inputsToCheck.map((inputData) => inputData.input));
+    clearError(inputsToCheck);
   }
 };

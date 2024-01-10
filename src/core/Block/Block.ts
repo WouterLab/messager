@@ -8,6 +8,7 @@ interface Props {
 
 export interface RefElement extends Element {
   value: string;
+  innerText: string;
 }
 
 interface Refs {

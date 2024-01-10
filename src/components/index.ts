@@ -21,3 +21,6 @@ export { ChatList } from "./ChatList";
 export { MessageList } from "./MessageList";
 export { SidebarButton } from "./SidebarButton";
 export { BackButton } from "./BackButton";
+export { AttachButton } from "./AttachButton";
+export { PropsButton } from "./PropsButton";
+export { SendButton } from "./SendButton";

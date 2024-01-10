@@ -1,0 +1,1 @@
+export { PropsButton } from "./PropsButton";

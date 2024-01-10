@@ -1,4 +1,7 @@
 import Block from "#core/Block/Block";
+import { attachFile } from "#scripts/attach";
+import { editChat } from "#scripts/editChat";
+import { sendMessage } from "#scripts/sendMessage";
 
 type ChatWindowProps = {
   name: string;
@@ -7,7 +10,19 @@ type ChatWindowProps = {
 
 export class ChatWindow extends Block {
   constructor(props: ChatWindowProps) {
-    super(props);
+    super({
+      ...props,
+      onViewProps: () => {
+        editChat();
+      },
+      onAttachFile: () => {
+        attachFile();
+      },
+      onSendMessage: () => {
+        const chatInput = this.refs.chatInput.element;
+        sendMessage(chatInput);
+      },
+    });
   }
 
   protected render(): string {
@@ -20,26 +35,13 @@ export class ChatWindow extends Block {
             <img src="${profile}" alt="user-profile">
             <div>${name}</div>
         </div>
-        <div class="chatWindowHeaderProps" id="edit-chat">
-            <img class="noClick" src="assets/props.svg" alt="properties">
-            {{#> ModalSmall id="edit-modal" class="pos-bottom hidden"}}
-              {{{ ModalVariant img="assets/add-user.svg" text="Добавить пользователя" }}}
-              {{{ ModalVariant img="assets/delete-user.svg" text="Удалить пользователя" }}}
-            {{/ModalSmall}}
-        </div>
+        {{{ PropsButton onClick=onViewProps }}}
     </div>
     {{{ MessageList }}}
     <div class="chatWindowInputs">
-        <img class="chatWindowInputsAttach" src="assets/attach.svg" id="attach" alt="attach">
-        {{#> ModalSmall id="attach-modal" class="pos-top hidden"}}
-          {{{ ModalVariant img="assets/attach-media.svg" text="Фото или Видео" }}}
-          {{{ ModalVariant img="assets/attach-file.svg" text="Файл" }}}
-          {{{ ModalVariant img="assets/attach-location.svg" text="Локация" }}}
-        {{/ModalSmall}}
-        {{{ ChatInput name="message" }}}
-        <div class="chatWindowInputsSend">
-            <img src="assets/arrow.svg" alt="send" id="send-message">
-        </div>
+        {{{ AttachButton id="attach" onClick=onAttachFile }}}
+        {{{ ChatInput name="message" ref="chatInput" }}}
+        {{{ SendButton onClick=onSendMessage }}}
     </div>
 </section>
 `;

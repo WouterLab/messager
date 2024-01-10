@@ -1,0 +1,14 @@
+.chatWindowInputsSend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $green;
+  border-radius: 50px;
+  min-width: 40px;
+  height: 100%;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+  }
+}

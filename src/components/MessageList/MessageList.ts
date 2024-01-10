@@ -1,8 +1,11 @@
 /* eslint-disable max-len */
 import Block from "#core/Block/Block";
+import { MessageType } from "#types/types";
 import { nanoid } from "nanoid";
 
-type MessageListProps = {};
+type MessageListProps = {
+  messages: MessageType;
+};
 
 export class MessageList extends Block {
   constructor(props: MessageListProps) {

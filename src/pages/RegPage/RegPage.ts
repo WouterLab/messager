@@ -1,6 +1,10 @@
-import Block from "#core/Block/Block";
+import Block, { RefElement } from "#core/Block/Block";
 import { navigate } from "#core/navigate";
-import { registration } from "#scripts/registration";
+import {
+  clearErrorMessage,
+  registration,
+  validateInput,
+} from "#scripts/registration";
 import { PagesUrls } from "#types/types";
 
 export class RegPage extends Block {
@@ -19,15 +23,28 @@ export class RegPage extends Block {
         const fnameInput = this.refs.fname.element;
         const snameInput = this.refs.sname.element;
         const phoneInput = this.refs.phone.element;
+
         registration(
-          loginInput,
-          passwordInput,
-          secPasswordInput,
           emailInput,
+          loginInput,
           fnameInput,
           snameInput,
           phoneInput,
+          passwordInput,
+          secPasswordInput,
         );
+      },
+      onChangeInput: () => {
+        const errorLabel = document.getElementById("reg-message");
+        if (errorLabel) {
+          clearErrorMessage(errorLabel);
+        }
+      },
+      onBlurValidate: (e: Event) => {
+        const input = e.target as RefElement;
+        if (input) {
+          validateInput(input);
+        }
       },
     });
   }
@@ -37,14 +54,21 @@ export class RegPage extends Block {
     {{#> Form title="Вход" action="" method="POST" id="reg-form"}}
     <div class="formWrapper reg">
       <div class="formRows">
-        {{{ Input placeholder="Почта" name="email" type="email" id="reg-email" ref="email" }}}
-        {{{ Input placeholder="Логин" name="login" id="reg-login" ref="login" }}}
-        {{{ Input placeholder="Имя" name="first_name" id="reg-fname" ref="fname" }}}
-        {{{ Input placeholder="Фамилия" name="second_name" id="reg-sname" ref="sname" }}}
-        {{{ Input placeholder="Телефон" name="phone" type="phone" id="reg-phone" ref="phone" }}}
-        {{{ Input placeholder="Пароль" name="password" type="password" id="reg-password" ref="password" }}}
-        {{{ Input placeholder="Пароль (ещё раз)" name="password" type="password" 
-        id="reg-s-password" ref="secPassword" }}}
+      {{{ Input placeholder="Почта" onChange=onChangeInput 
+      name="email" type="email" id="reg-email" ref="email" onBlur=onBlurValidate }}}
+      {{{ Input placeholder="Логин" onChange=onChangeInput 
+      name="login" id="reg-login" ref="login" onBlur=onBlurValidate }}}
+      {{{ Input placeholder="Имя" onChange=onChangeInput 
+      name="first_name" id="reg-fname" ref="fname" onBlur=onBlurValidate }}}
+      {{{ Input placeholder="Фамилия" onChange=onChangeInput 
+      name="second_name" id="reg-sname" ref="sname" onBlur=onBlurValidate }}}
+      {{{ Input placeholder="Телефон" onChange=onChangeInput 
+      name="phone" type="phone" id="reg-phone" ref="phone" onBlur=onBlurValidate }}}
+      {{{ Input placeholder="Пароль" onChange=onChangeInput name="password" type="password" 
+      id="reg-password" ref="password" onBlur=onBlurValidate }}}
+      {{{ Input placeholder="Пароль (ещё раз)" onChange=onChangeInput 
+      name="password" type="password" onBlur=onBlurValidate
+      id="reg-s-password" ref="secPassword" }}}  
       </div>
       <p class="errorMessage" id="reg-message"></p>
       <div class="formButtons">

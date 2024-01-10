@@ -5,11 +5,20 @@ type InputProps = {
   type: string;
   name: string;
   id: number;
+  onBlur?: () => void;
+  onChange?: () => void;
 };
 
 export class Input extends Block {
   constructor(props: InputProps) {
     super(props);
+  }
+
+  protected init(): void {
+    this.props.events = {
+      blur: this.props.onBlur,
+      input: this.props.onChange,
+    };
   }
 
   protected render(): string {

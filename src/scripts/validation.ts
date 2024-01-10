@@ -30,6 +30,8 @@ export const validation = (
     passwordInput.classList.add("error");
     clearError();
   } else {
+    console.log(loginInput.value, passwordInput.value);
+
     navigate(PagesUrls.MainPage);
   }
 };

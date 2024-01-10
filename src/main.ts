@@ -17,7 +17,7 @@ Object.entries(Pages).forEach(([name, component]) => {
   registerComponent(name, component);
 });
 
-const defaultRoot = PagesUrls.MainPage;
+const defaultRoot = PagesUrls.LoginPage;
 
 document.addEventListener("DOMContentLoaded", () => {
   const currentRoute = document.location.pathname.slice(1);
