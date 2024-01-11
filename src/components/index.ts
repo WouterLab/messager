@@ -24,3 +24,5 @@ export { BackButton } from "./BackButton";
 export { AttachButton } from "./AttachButton";
 export { PropsButton } from "./PropsButton";
 export { SendButton } from "./SendButton";
+export { ProfileAvatar } from "./ProfileAvatar";
+export { ProfileInput } from "./ProfileInput";

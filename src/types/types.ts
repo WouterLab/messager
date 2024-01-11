@@ -39,6 +39,6 @@ export type ProfileProps = {
   login: string;
   fname: string;
   lname: string;
-  displayed: string;
+  displayedName: string;
   phone: string;
 };

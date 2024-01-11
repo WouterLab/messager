@@ -22,12 +22,11 @@ export class ProfilePage extends Block {
       },
       currentView: "default",
       image: "assets/dog2.jpg",
-      name: "Danil",
       email: "mail@mail.ru",
       login: "boymep",
       fname: "Danil",
       lname: "Panov",
-      displayed: "Boymep",
+      displayedName: "Boymep",
       phone: "+7 (999) 999 99 99",
     });
   }
@@ -35,22 +34,22 @@ export class ProfilePage extends Block {
   protected render(): string {
     if (this.props.currentView === "edit-info") {
       return `<div class="changeInfoWrapper">
-      <img src="assets/back.svg" redirect="profile" alt="return-back" class="backArrow">
+      {{{ BackButton onClick=onReturnBack }}}
       <div class="changeInfo">
-          {{{ ProfileEditInfo img="${this.props.image}" name="${this.props.name}" 
-          email="${this.props.email}" login="${this.props.login}" fname="${this.props.fname}"
-          lname="${this.props.lname}" displayed="${this.props.displayed}" phone="${this.props.phone}" }}}
-          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" }}}</div>
+          {{{ ProfileEditInfo image="${this.props.image}" email="${this.props.email}" 
+          login="${this.props.login}" fname="${this.props.fname}" lname="${this.props.lname}" 
+          displayedName="${this.props.displayedName}" phone="${this.props.phone}" }}}
+          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" id="profile-save-info" }}}</div>
       </div>
       <div class="changeInfoLogo">{{> Logo}}</div>
       </div>
       `;
     } else if (this.props.currentView === "edit-pass") {
       return `<div class="changePassWrapper">
-      <img src="assets/back.svg" redirect="profile" alt="return-back" class="backArrow">
+      {{{ BackButton onClick=onReturnBack }}}
       <div class="changePass">
-          {{{ ProfileEditPassword img="assets/dog2.jpg" displayed="Boymep" }}}
-          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" }}}</div>
+          {{{ ProfileEditPassword img="assets/dog2.jpg" displayedName="Boymep" }}}
+          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" id="profile-save-pass" }}}</div>
       </div>
       <div class="changePassLogo">{{> Logo}}</div>
       </div>
@@ -64,7 +63,7 @@ export class ProfilePage extends Block {
         login="${this.props.login}"
         fname="${this.props.fname}"
         lname="${this.props.lname}"
-        displayed="${this.props.displayed}"
+        displayedName="${this.props.displayedName}"
         phone="${this.props.phone}"
         }}}
         {{{ ButtonGhost onClick=onChangeData id="change-info" text="Изменить данные" }}}

@@ -1,11 +1,8 @@
 import Block, { RefElement } from "#core/Block/Block";
 import { navigate } from "#core/navigate";
-import {
-  clearErrorMessage,
-  registration,
-  validateInput,
-} from "#scripts/registration";
+import { clearErrorMessage, registration } from "#scripts/registration";
 import { PagesUrls } from "#types/types";
+import { validateInput } from "#utils/utils";
 
 export class RegPage extends Block {
   constructor() {
@@ -67,7 +64,7 @@ export class RegPage extends Block {
       {{{ Input placeholder="Пароль" onChange=onChangeInput name="password" type="password" 
       id="reg-password" ref="password" onBlur=onBlurValidate }}}
       {{{ Input placeholder="Пароль (ещё раз)" onChange=onChangeInput 
-      name="password" type="password" onBlur=onBlurValidate
+      name="s-password" type="password" onBlur=onBlurValidate
       id="reg-s-password" ref="secPassword" }}}  
       </div>
       <p class="errorMessage" id="reg-message"></p>

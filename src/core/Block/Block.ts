@@ -5,6 +5,7 @@ import { EventBus } from "src/core/EventBus/EventBus";
 export interface RefElement extends Element {
   value: string;
   innerText: string;
+  name: string;
 }
 
 interface Props {

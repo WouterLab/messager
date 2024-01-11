@@ -5,6 +5,7 @@ type ButtonProps = {
   type: string;
   id: string;
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 export class Button extends Block {
@@ -19,9 +20,12 @@ export class Button extends Block {
   }
 
   protected render(): string {
-    const { text, id, type } = this.props;
+    const { text, id, type, disabled } = this.props;
     const idAttribute = id ? `id="${id}"` : "";
+    const typeAttribute = type ? `type="${type}"` : "";
 
-    return `<button class="button" ${idAttribute} type="${type}">${text}</button>`;
+    return `<button class="button ${
+      disabled ? "disabled" : ""
+    }" ${idAttribute} ${typeAttribute}>${text}</button>`;
   }
 }

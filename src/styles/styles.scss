@@ -15,8 +15,6 @@
 @import "./src/components/Message/Message";
 @import "./src/components/Divider/Divider";
 @import "./src/components/ProfileInfo/ProfileInfo";
-@import "./src/components/ProfileEditInfo/ProfileEditInfo";
-@import "./src/components/ProfileEditPassword/ProfileEditPassword";
 @import "./src/components/ModalVariant/ModalVariant";
 @import "./src/components/ChatList/ChatList";
 @import "./src/components/ModalSmall/ModalSmall";
@@ -26,6 +24,8 @@
 @import "./src/components/AttachButton/AttachButton";
 @import "./src/components/PropsButton/PropsButton";
 @import "./src/components/SendButton/SendButton";
+@import "./src/components/ProfileAvatar/ProfileAvatar";
+@import "./src/components/ProfileInput/ProfileInput";
 
 @import "./src/pages/LoginPage/LoginPage";
 @import "./src/pages/RegPage/RegPage";
@@ -107,24 +107,6 @@ body,
 .noClick {
   pointer-events: none;
   cursor: default;
-}
-
-.inputProfile {
-  outline: none;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  transition: all 0.3s;
-  text-align: end;
-  color: $black;
-
-  &[type="password"] {
-    font-family: Verdana;
-  }
-
-  &Error {
-    color: $red;
-  }
 }
 
 .pos-top {

@@ -6,7 +6,7 @@ type ProfileInfoProps = {
   login: string;
   fname: string;
   lname: string;
-  displayed: string;
+  displayedName: string;
   phone: string;
 };
 
@@ -16,19 +16,14 @@ export class ProfileInfo extends Block {
   }
 
   protected render(): string {
-    const { image, email, login, fname, lname, displayed, phone } = this.props;
+    const { image, email, login, fname, lname, displayedName, phone } =
+      this.props;
 
     return `
     <div class="profileInfo">
     <div class="profileInfoTop">
-        <div class="profileInfoImg">
-            <img src="${image}" alt="profile-image">
-            <div class="profileInfoImgHover">
-                <span>Новое фото</span>
-            </div>
-            <input class="profileInfoImgFile" type="file" name="avatar" />
-        </div>
-        <div>${displayed}</div>
+        {{{ ProfileAvatar image="${image}" }}}
+        <div>${displayedName}</div>
     </div>
     <div class="profileInfoRows">
         <div class="profileInfoRow">
@@ -53,7 +48,7 @@ export class ProfileInfo extends Block {
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Отображаемое имя</span>
-            <span class="grey">${displayed}</span>
+            <span class="grey">${displayedName}</span>
         </div>
         {{> Divider}}
         <div class="profileInfoRow">
