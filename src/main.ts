@@ -3,7 +3,7 @@ import * as Pages from "./pages";
 import "./styles/styles.scss";
 import { navigate } from "#core/navigate";
 import { pages } from "#constants/constants";
-import { registerComponent } from "#core/resgiterComponent";
+import { registerComponent } from "#core/registerComponent";
 import Handlebars, { Template } from "handlebars";
 import { PagesUrls } from "#types/types";
 

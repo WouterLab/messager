@@ -6,25 +6,20 @@ enum METHODS {
   DELETE = "DELETE",
 }
 
+type HTTPMethod = (
+  url: string,
+  options?: HttpRequestOptions,
+) => Promise<XMLHttpRequest>;
+
 export class HTTPTransport {
-  get(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHODS.GET });
-  }
-
-  post(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHODS.POST });
-  }
-
-  put(url: string, options: HttpRequestOptions = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHODS.PUT });
-  }
-
-  delete(
-    url: string,
-    options: HttpRequestOptions = {},
-  ): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHODS.DELETE });
-  }
+  get: HTTPMethod = (url, options = {}) =>
+    this.request(url, { ...options, method: METHODS.GET });
+  put: HTTPMethod = (url, options = {}) =>
+    this.request(url, { ...options, method: METHODS.PUT });
+  post: HTTPMethod = (url, options = {}) =>
+    this.request(url, { ...options, method: METHODS.POST });
+  delete: HTTPMethod = (url, options = {}) =>
+    this.request(url, { ...options, method: METHODS.DELETE });
 
   request(
     url: string,

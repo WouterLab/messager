@@ -2,13 +2,14 @@ import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 import { EventBus } from "src/core/EventBus/EventBus";
 
-interface Props {
-  [key: string]: any;
-}
-
 export interface RefElement extends Element {
   value: string;
   innerText: string;
+}
+
+interface Props {
+  [key: string]: any;
+  __refs?: Refs;
 }
 
 interface Refs {
@@ -66,7 +67,12 @@ class Block {
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(
+      Block.EVENTS.FLOW_CDU,
+      (_, oldProps: Props, newProps: Props) => {
+        this._componentDidUpdate(oldProps, newProps);
+      },
+    );
     eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
@@ -94,14 +100,14 @@ class Block {
     );
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  protected componentDidUpdate(_oldProps: any, _newProps: any) {
+  protected componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true;
   }
 
@@ -116,13 +122,24 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
   }
 
-  _componentWillUnmount() {
+  private _removeEvents() {
+    const { events = {} } = this.props as {
+      events: Record<string, () => void>;
+    };
+
+    Object.keys(events).forEach((eventName) => {
+      this._element!.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
+  private _componentWillUnmount() {
+    this._removeEvents();
     this.componentWillUnmount();
   }
 
   componentWillUnmount() {}
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -190,13 +207,13 @@ class Block {
     return this._element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     return new Proxy(props, {
-      get: (target, prop) => {
+      get: (target, prop: string) => {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set: (target, prop, value) => {
+      set: (target, prop: string, value) => {
         const oldTarget = { ...target };
 
         target[prop] = value;
