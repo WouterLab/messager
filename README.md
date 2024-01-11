@@ -33,9 +33,9 @@ https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3
 
 ## **Browser support**
 
-| Chrome                            | Safari                            | Opera                           | Yandex Browser                            | Chrome for Mobile |
-| --------------------------------- | --------------------------------- | ------------------------------- | ----------------------------------------- | ----------------- |
-| ![Chrome](docs/assets/chrome.png) | ![Safari](docs/assets/safari.png) | ![Opera](docs/assets/opera.png) | ![Yandex Browser](docs/assets/yandex.png) |
+| Chrome                     | Safari                     | Opera                    | Yandex Browser                     |
+| -------------------------- | -------------------------- | ------------------------ | ---------------------------------- |
+| ![Chrome](docs/chrome.png) | ![Safari](docs/safari.png) | ![Opera](docs/opera.png) | ![Yandex Browser](docs/yandex.png) |
 
 ## **Usage Examples**
 
