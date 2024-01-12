@@ -1,37 +1,38 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
-@import "./mixins.scss";
-@import "./variables.scss";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap";
+@import "./variables";
+@import "./src/components/Button/Button";
+@import "./src/components/ButtonGhost/ButtonGhost";
+@import "./src/components/Form/Form";
+@import "./src/components/AuthPage/AuthPage";
+@import "./src/components/Input/Input";
+@import "./src/components/Logo/Logo";
+@import "./src/components/Chat/Chat";
+@import "./src/components/Sidebar/Sidebar";
+@import "./src/components/Search/Search";
+@import "./src/components/Layout/Layout";
+@import "./src/components/ChatWindow/ChatWindow";
+@import "./src/components/ChatInput/ChatInput";
+@import "./src/components/Message/Message";
+@import "./src/components/Divider/Divider";
+@import "./src/components/ProfileInfo/ProfileInfo";
+@import "./src/components/ModalVariant/ModalVariant";
+@import "./src/components/ChatList/ChatList";
+@import "./src/components/ModalSmall/ModalSmall";
+@import "./src/components/MessageList/MessageList";
+@import "./src/components/SidebarButton/SidebarButton";
+@import "./src/components/BackButton/BackButton";
+@import "./src/components/AttachButton/AttachButton";
+@import "./src/components/PropsButton/PropsButton";
+@import "./src/components/SendButton/SendButton";
+@import "./src/components/ProfileAvatar/ProfileAvatar";
+@import "./src/components/ProfileInput/ProfileInput";
 
-@import "./src/components/Button/Button.scss";
-@import "./src/components/ButtonGhost/ButtonGhost.scss";
-@import "./src/components/Form/Form.scss";
-@import "./src/components/AuthPage/AuthPage.scss";
-@import "./src/components/Input/Input.scss";
-@import "./src/components/Logo/Logo.scss";
-@import "./src/components/Chat/Chat.scss";
-@import "./src/components/Sidebar/Sidebar.scss";
-@import "./src/components/Search/Search.scss";
-@import "./src/components/Layout/Layout.scss";
-@import "./src/components/ChatWindow/ChatWindow.scss";
-@import "./src/components/ChatInput/ChatInput.scss";
-@import "./src/components/Message/Message.scss";
-@import "./src/components/MyMessage/MyMessage.scss";
-@import "./src/components/ImageMessage/ImageMessage.scss";
-@import "./src/components/Divider/Divider.scss";
-@import "./src/components/ProfileInfo/ProfileInfo.scss";
-@import "./src/components/ProfileEditInfo/ProfileEditInfo.scss";
-@import "./src/components/ProfileEditPassword/ProfileEditPassword.scss";
-@import "./src/components/ModalVariant/ModalVariant.scss";
-@import "./src/components/ModalSmall/ModalSmall.scss";
-
-@import "./src/pages/LoginPage/LoginPage.scss";
-@import "./src/pages/RegPage/RegPage.scss";
-@import "./src/pages/MainPage/MainPage.scss";
-@import "./src/pages/ChatPage/ChatPage.scss";
-@import "./src/pages/Page404/Page404.scss";
-@import "./src/pages/ProfilePage/ProfilePage.scss";
-@import "./src/pages/EditInfoPage/EditInfoPage.scss";
-@import "./src/pages/EditPassPage/EditPassPage.scss";
+@import "./src/pages/LoginPage/LoginPage";
+@import "./src/pages/RegPage/RegPage";
+@import "./src/pages/MainPage/MainPage";
+@import "./src/pages/ChatPage/ChatPage";
+@import "./src/pages/Page404/Page404";
+@import "./src/pages/ProfilePage/ProfilePage";
 
 html,
 body,
@@ -73,7 +74,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
 }
@@ -82,7 +82,7 @@ html,
 body,
 #app {
   height: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
   overflow: auto;
   background-color: $grey;
   color: $black;
@@ -107,24 +107,6 @@ body,
 .noClick {
   pointer-events: none;
   cursor: default;
-}
-
-.inputProfile {
-  outline: none;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  transition: all 0.3s;
-  text-align: end;
-  color: $black;
-
-  &[type="password"] {
-    font-family: Verdana;
-  }
-
-  &Error {
-    color: $red;
-  }
 }
 
 .pos-top {

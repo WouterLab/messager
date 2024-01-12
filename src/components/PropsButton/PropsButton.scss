@@ -1,0 +1,13 @@
+.chatWindowHeaderProps {
+  cursor: pointer;
+  height: 20px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  img {
+    height: 100%;
+  }
+}

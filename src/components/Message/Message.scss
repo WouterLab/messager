@@ -1,7 +1,7 @@
 .message {
   background-color: $white;
   padding: 16px 20px;
-  border-radius: 0 10px 10px 10px;
+  border-radius: 0 10px 10px;
   max-width: 40%;
   min-width: 100px;
   position: relative;
@@ -20,4 +20,67 @@
     right: 20px;
     bottom: 10px;
   }
+}
+
+.myMessage {
+  background-color: $green-thin;
+  padding: 16px 20px;
+  border-radius: 10px 10px 0;
+  max-width: 40%;
+  justify-self: flex-end;
+  min-width: 150px;
+  position: relative;
+
+  &Wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+
+  &Info {
+    position: absolute;
+    font-size: 10px;
+    text-align: end;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+    &Read {
+      height: 8px;
+    }
+  }
+}
+
+.imgMessage {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid $grey;
+
+  &Wrapper {
+    position: relative;
+    width: fit-content;
+  }
+
+  &Time {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: $grey-dark;
+    color: $white;
+    font-size: 10px;
+    padding: 0 10px;
+    border-radius: 10px;
+  }
+}
+
+.outgoing {
+  display: grid;
+  width: 100%;
+  justify-content: flex-end;
 }

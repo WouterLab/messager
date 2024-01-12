@@ -1,1 +1,1 @@
-export { default as ButtonGhost } from "./ButtonGhost.hbs?raw";
+export { ButtonGhost } from "./ButtonGhost";

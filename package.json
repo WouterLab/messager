@@ -9,14 +9,23 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "stylelint": "npx stylelint '**/*.scss' --fix"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
     "express": "^4.18.2",
     "handlebars": "^4.7.8",
     "sass": "^1.69.5",
+    "stylelint": "^16.0.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
+    "vite-plugin-checker": "^0.6.2",
     "vite-tsconfig-paths": "^4.2.2"
+  },
+  "dependencies": {
+    "nanoid": "^5.0.4"
   }
 }

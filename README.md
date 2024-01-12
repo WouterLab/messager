@@ -1,10 +1,16 @@
-## Установка
+## **About**
+
+Веб-приложение онлайн месседжера "Me"
+
+![Logo](docs/logo.svg)
+
+## **Installing**
 
 - `npm install` — установка стабильной версии,
 - `npm run dev` — запуск версии для разработчика,
 - `npm run build` — сборка стабильной версии.
 
-## **Frontend Тестирование**
+## **Frontend Testing**
 
 Проект на Netlify: https://boymep-messager.netlify.app/
 
@@ -18,17 +24,23 @@
 /chats
 /chat
 /profile
-/edit-info
-/edit-pass
 
-## **Макет в Figma**
+## **Figma Layout**
 
 https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&mode=dev
 
 (Из-за работы пока не успел сделать собственный макет, использовал предоставленный, но внес свои изменения. Во время ревью постараюсь заняться макетом отдельно)
 
-## **Примеры использования**
+## **Browser support**
 
-### **Команда**
+| Chrome                     | Safari                     | Opera                    | Yandex Browser                     |
+| -------------------------- | -------------------------- | ------------------------ | ---------------------------------- |
+| ![Chrome](docs/chrome.png) | ![Safari](docs/safari.png) | ![Opera](docs/opera.png) | ![Yandex Browser](docs/yandex.png) |
+
+## **Usage Examples**
+
+![Examples](docs/main.png)
+
+### **Team**
 
 Danil Panov (@boymep)

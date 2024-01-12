@@ -1,0 +1,10 @@
+.sidebarButton {
+  font-size: 14px;
+  color: $grey-dark;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $green;
+  }
+}

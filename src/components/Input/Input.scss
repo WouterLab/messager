@@ -12,6 +12,11 @@
     border-bottom: 1px solid $green;
     box-sizing: border-box;
   }
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .error {

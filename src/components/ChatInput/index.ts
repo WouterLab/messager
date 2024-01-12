@@ -1,1 +1,1 @@
-export { default as ChatInput } from "./ChatInput.hbs?raw";
+export { ChatInput } from "./ChatInput";
