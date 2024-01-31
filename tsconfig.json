@@ -13,6 +13,8 @@
       "#constants/*": ["src/constants/*"],
       "#types/*": ["src/types/*"],
       "#scripts/*": ["src/scripts/*"],
+      "#services/*": ["src/services/*"],
+      "#api/*": ["src/api/*"],
       "#styles/*": ["src/styles/*"],
       "#utils/*": ["src/utils/*"],
       "#core/*": ["src/core/*"]
