@@ -1,7 +1,5 @@
-import Block from "#core/Block/Block";
-
 export interface Page {
-  [key: string]: new () => Block;
+  [key: string]: any;
 }
 
 export enum PagesUrls {
@@ -11,8 +9,6 @@ export enum PagesUrls {
   ChatPage = "chat",
   Page404 = "404",
   ProfilePage = "profile",
-  EditInfoPage = "edit-info",
-  EditPassPage = "edit-pass",
 }
 
 export type MessageType = {

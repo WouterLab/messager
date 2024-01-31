@@ -1,12 +1,13 @@
 import Block from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { PagesUrls } from "#types/types";
+import { connect } from "#utils/connect";
 
-export class ProfilePage extends Block {
+class ProfilePage extends Block {
   constructor() {
     super({
       onReturnBack: () => {
-        navigate(PagesUrls.MainPage);
+        router.go(PagesUrls.MainPage);
       },
       onChangeData: () => {
         this.setProps({ currentView: "edit-info" });
@@ -15,7 +16,7 @@ export class ProfilePage extends Block {
         this.setProps({ currentView: "edit-pass" });
       },
       onLogOut: () => {
-        navigate(PagesUrls.LoginPage);
+        router.go(PagesUrls.LoginPage);
       },
       onSaveInfo: () => {
         this.setProps({ currentView: "default" });
@@ -76,3 +77,5 @@ export class ProfilePage extends Block {
     </div>`;
   }
 }
+
+export default connect(ProfilePage);

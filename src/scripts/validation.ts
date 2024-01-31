@@ -1,5 +1,5 @@
 import { RefElement } from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { PagesUrls } from "#types/types";
 
 const defaultLogin = "user";
@@ -32,6 +32,6 @@ export const validation = (
   } else {
     console.log(loginInput.value, passwordInput.value);
 
-    navigate(PagesUrls.MainPage);
+    router.go(PagesUrls.MainPage);
   }
 };

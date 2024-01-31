@@ -1,15 +1,15 @@
 import Block, { RefElement } from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { clearErrorMessage, registration } from "#scripts/registration";
 import { PagesUrls } from "#types/types";
 import { validateInput } from "#utils/utils";
 
-export class RegPage extends Block {
+class RegPage extends Block {
   constructor() {
     super({
       onSignIn: (e: Event) => {
         e.preventDefault();
-        navigate(PagesUrls.LoginPage);
+        router.go(PagesUrls.LoginPage);
       },
       onReg: (e: Event) => {
         e.preventDefault();
@@ -77,3 +77,5 @@ export class RegPage extends Block {
     {{/AuthPage}}`;
   }
 }
+
+export default RegPage;

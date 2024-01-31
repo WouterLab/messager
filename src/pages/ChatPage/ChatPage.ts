@@ -1,6 +1,7 @@
 import Block from "#core/Block/Block";
+import { connect } from "#utils/connect";
 
-export class ChatPage extends Block {
+class ChatPage extends Block {
   constructor() {
     super({
       name: "Danil",
@@ -14,3 +15,5 @@ export class ChatPage extends Block {
     {{/ Layout}}`;
   }
 }
+
+export default connect(ChatPage);

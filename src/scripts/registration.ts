@@ -1,5 +1,5 @@
 import { RefElement } from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { PagesUrls } from "#types/types";
 import { validateInput } from "#utils/utils";
 
@@ -56,7 +56,7 @@ export const registration = (
   if (isValid) {
     inputsToCheck.forEach((input) => console.log(input.value));
 
-    navigate(PagesUrls.MainPage);
+    router.go(PagesUrls.MainPage);
   } else {
     clearError(inputsToCheck);
   }

@@ -1,5 +1,5 @@
 import Block from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { ChatType, PagesUrls } from "#types/types";
 
 export class Chat extends Block {
@@ -7,7 +7,7 @@ export class Chat extends Block {
     super({
       ...props,
       onChatChoose: () => {
-        navigate(PagesUrls.ChatPage);
+        router.go(PagesUrls.ChatPage);
         const chatWindow = <HTMLDivElement>(
           document.getElementById("chat-window")
         );

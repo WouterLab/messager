@@ -25,5 +25,5 @@
     "sourceMap": true,
     "strictNullChecks": true
   },
-  "include": ["src", "src/types/index.d.ts"]
+  "include": ["src", "src/types/index.d.ts", "src/main.ts"]
 }

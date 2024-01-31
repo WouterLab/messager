@@ -1,1 +1,1 @@
-export { RegPage } from "./RegPage";
+export { default as RegPage } from "./RegPage";

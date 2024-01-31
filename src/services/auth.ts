@@ -1,6 +1,7 @@
 import AuthApi from "#api/auth";
 import { CreateUser, LoginRequestData, UserDTO } from "#api/types";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
+import { PagesUrls } from "#types/types";
 import { apiHasError } from "#utils/apiHasError";
 import { transformUser } from "#utils/apiTransformer";
 
@@ -24,7 +25,7 @@ const signin = async (data: LoginRequestData) => {
   const me = await getUser();
 
   window.store.set({ user: me });
-  navigate("emails");
+  router.go(PagesUrls.MainPage);
 };
 
 const signup = async (data: CreateUser) => {
@@ -35,13 +36,13 @@ const signup = async (data: CreateUser) => {
 
   const me = await getUser();
   window.store.set({ user: me });
-  navigate("emails");
+  router.go(PagesUrls.MainPage);
 };
 
 const logout = async () => {
   await authApi.logout();
   window.store.set({ user: null, chats: [] });
-  navigate("login");
+  router.go(PagesUrls.LoginPage);
 };
 
 export { signin, signup, logout, getUser };

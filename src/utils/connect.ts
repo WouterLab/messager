@@ -3,35 +3,28 @@ import { StoreEvents } from "#core/Store/Store";
 import { AppState } from "#types/types";
 import isEqual from "./isEqual";
 
-export function connect(
-  mapStateToProps: (state: AppState) => Partial<AppState>,
-) {
-  return function (Component: typeof Block) {
-    return class extends Component {
-      private onChangeStoreCallback: () => void;
-      constructor(props: Props) {
-        const store = window.store;
-        let state = mapStateToProps(store.getState());
+export const connect = <T extends Props = Record<string, never>>(
+  Component: typeof Block,
+  mapStateToProps?: (state: AppState, props: T) => T,
+) =>
+  class extends Component {
+    constructor(props = {} as T) {
+      const state = mapStateToProps
+        ? mapStateToProps(window.store.getState(), props)
+        : window.store.getState();
 
-        super({ ...props, ...state });
+      super({ ...props, ...state });
 
-        this.onChangeStoreCallback = () => {
-          const newState = mapStateToProps(store.getState());
+      window.store.on(StoreEvents.Updated, () => {
+        const newState = mapStateToProps
+          ? mapStateToProps(window.store.getState(), props)
+          : window.store.getState();
 
-          if (!isEqual(state, newState)) {
-            this.setProps({ ...newState });
-          }
-
-          state = newState;
-        };
-
-        store.on(StoreEvents.Updated, this.onChangeStoreCallback);
-      }
-
-      componentWillUnmount() {
-        super.componentWillUnmount();
-        window.store.off(StoreEvents.Updated, this.onChangeStoreCallback);
-      }
-    };
-  };
-}
+        if (!isEqual(state, newState)) {
+          this.setProps({
+            ...newState,
+          });
+        }
+      });
+    }
+  } as unknown as typeof Block;

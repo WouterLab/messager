@@ -1,15 +1,5 @@
 import Block from "#core/Block/Block";
 
-function render(query: string, block: Block): HTMLElement {
-  const root = document.querySelector(query) as HTMLElement;
-  const content = block.getContent();
-  if (content !== null) {
-    root.innerHTML = "";
-    root.appendChild(content);
-  }
-  return root;
-}
-
 class Route {
   private _pathname: string;
   private _blockClass: { new (): Block };
@@ -47,7 +37,13 @@ class Route {
   render(): void {
     if (!this._block) {
       this._block = new this._blockClass();
-      render(this._props.rootQuery, this._block);
+      const root = document.querySelector(this._props.rootQuery) as HTMLElement;
+      const content = this._block.getContent();
+
+      if (content !== null) {
+        root.innerHTML = "";
+        root.appendChild(content);
+      }
       return;
     }
 
@@ -62,7 +58,7 @@ export class Router {
   private _currentRoute: Route | null;
   private _rootQuery: string;
 
-  private constructor(rootQuery: string) {
+  constructor(rootQuery: string) {
     this.routes = [];
     this.history = window.history;
     this._currentRoute = null;
@@ -97,6 +93,7 @@ export class Router {
 
   private _onRoute(pathname: string): void {
     const route = this.getRoute(pathname);
+
     if (!route) {
       return;
     }
@@ -106,6 +103,7 @@ export class Router {
     }
 
     this._currentRoute = route;
+
     route.render();
   }
 
@@ -123,6 +121,7 @@ export class Router {
   }
 
   getRoute(pathname: string): Route | undefined {
-    return this.routes.find((route) => route.match(pathname));
+    const exactRoute = this.routes.find((route) => route.match(pathname));
+    return exactRoute;
   }
 }

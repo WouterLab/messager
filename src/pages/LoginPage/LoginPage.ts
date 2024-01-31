@@ -1,15 +1,14 @@
 import Block from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { validation } from "#scripts/validation";
 import { PagesUrls } from "#types/types";
-import { connect } from "#utils/connect";
 
-export class LoginPage extends Block {
+class LoginPage extends Block {
   constructor() {
     super({
       onSignUp: (e: Event) => {
         e.preventDefault();
-        navigate(PagesUrls.RegPage);
+        router.go(PagesUrls.RegPage);
       },
       onLogin: (e: Event) => {
         e.preventDefault();
@@ -38,4 +37,4 @@ export class LoginPage extends Block {
   }
 }
 
-export default connect(({ chats, user }) => ({ chats, user }))(LoginPage);
+export default LoginPage;
