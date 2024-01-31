@@ -2,7 +2,11 @@ import Block from "#core/Block/Block";
 
 function render(query: string, block: Block): HTMLElement {
   const root = document.querySelector(query) as HTMLElement;
-  root.textContent = block.getContent();
+  const content = block.getContent();
+  if (content !== null) {
+    root.innerHTML = "";
+    root.appendChild(content);
+  }
   return root;
 }
 
@@ -12,7 +16,11 @@ class Route {
   private _block: Block | null;
   private _props: { rootQuery: string };
 
-  constructor(pathname: string, view: { new (): Block }, props: { rootQuery: string }) {
+  constructor(
+    pathname: string,
+    view: { new (): Block },
+    props: { rootQuery: string },
+  ) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;
@@ -80,8 +88,8 @@ export class Router {
   }
 
   start(): void {
-    window.onpopstate = (event: PopStateEvent) => {
-      this._onRoute(event.currentTarget.location.pathname);
+    window.onpopstate = () => {
+      this._onRoute(window.location.pathname);
     };
 
     this._onRoute(window.location.pathname);

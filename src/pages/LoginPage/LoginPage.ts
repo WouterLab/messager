@@ -2,6 +2,7 @@ import Block from "#core/Block/Block";
 import { navigate } from "#core/navigate";
 import { validation } from "#scripts/validation";
 import { PagesUrls } from "#types/types";
+import { connect } from "#utils/connect";
 
 export class LoginPage extends Block {
   constructor() {
@@ -36,3 +37,5 @@ export class LoginPage extends Block {
       {{/AuthPage}}`;
   }
 }
+
+export default connect(({ chats, user }) => ({ chats, user }))(LoginPage);

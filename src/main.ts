@@ -21,6 +21,7 @@ const initState: AppState = {
   isOpenDialogChat: false,
   chats: [],
 };
+
 window.store = new Store<AppState>(initState);
 
 Object.entries(Components).forEach(([name, component]) => {

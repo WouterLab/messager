@@ -8,7 +8,7 @@ export interface RefElement extends Element {
   name: string;
 }
 
-interface Props {
+export interface Props {
   [key: string]: any;
   __refs?: Refs;
 }
