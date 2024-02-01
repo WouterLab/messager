@@ -84,7 +84,7 @@ export class Router {
 
   start(): void {
     window.onpopstate = () => {
-      this._onRoute(window.location.pathname);
+      this._onRoute(window.location.pathname.slice(1));
     };
 
     this._onRoute(window.location.pathname);
