@@ -41,7 +41,6 @@ class Route {
       const content = this._block.getContent();
 
       if (content !== null) {
-        root.innerHTML = "";
         root.appendChild(content);
       }
       return;

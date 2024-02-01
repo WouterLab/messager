@@ -48,7 +48,7 @@ class RegPage extends Block {
 
   protected render(): string {
     return `{{#> AuthPage}}
-    {{#> Form title="Вход" action="" method="POST" id="reg-form"}}
+    {{#> Form title="Регистрация" action="" method="POST" id="reg-form"}}
     <div class="formWrapper reg">
       <div class="formRows">
       {{{ Input placeholder="Почта" onChange=onChangeInput 

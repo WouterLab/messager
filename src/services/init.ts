@@ -8,6 +8,11 @@ const init = async () => {
   try {
     me = await getUser();
   } catch (error) {
+    if (window.location.pathname === "/reg") {
+      router.go(PagesUrls.RegPage);
+      return;
+    }
+
     router.go(PagesUrls.LoginPage);
     return;
   }
