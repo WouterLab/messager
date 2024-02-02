@@ -24,15 +24,15 @@ export class ProfileEditPassword extends Block {
   }
 
   protected render(): string {
-    const { image } = this.props;
+    const { image, display_name } = this.props;
+
+    const noDisplayName = display_name === "null" || !display_name;
 
     return `
     <div class="profileInfo">
     <div class="profileInfoTop">
-        <div class="profileInfoImg noClick">
-        ${image !== "null" ? '<img src="${image}" alt="profile-image">' : ""}
-        </div>
-        <div>{{display_name}}</div>
+    {{{ ProfileAvatar image="${image}" }}}
+    <div>${noDisplayName ? "" : display_name}</div>
     </div>
     <div class="profileInfoRows">
         <div class="profileInfoRow">

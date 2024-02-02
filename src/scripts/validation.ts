@@ -1,7 +1,10 @@
 import { RefElement } from "#core/Block/Block";
 import { signin } from "#services/auth";
 
-export const validation = async (loginInput: RefElement, passwordInput: RefElement) => {
+export const validation = async (
+  loginInput: RefElement,
+  passwordInput: RefElement,
+) => {
   const errorLabel = document.getElementById("login-message");
 
   const clearError = () => {

@@ -16,6 +16,11 @@ class LoginPage extends Block {
         const passwordInput = this.refs.password.element;
         validation(loginInput, passwordInput);
       },
+      onKeyDown: (e: KeyboardEvent) => {
+        if (e.key === "Enter") {
+          this.props.onLogin(e);
+        }
+      },
     });
   }
 
@@ -25,7 +30,8 @@ class LoginPage extends Block {
       <div class="formWrapper">
           <div class="formRows">
               {{{ Input placeholder="Логин" name="login" ref="login" id="auth-login" }}}
-              {{{ Input placeholder="Пароль" name="password" ref="password" type="password" id="auth-password" }}}
+              {{{ Input placeholder="Пароль" name="password" ref="password"
+               type="password" id="auth-password" onKeyDown=onKeyDown }}}
           </div>
           <div class="formButtons">
               <p class="errorMessage" id="login-message"></p>

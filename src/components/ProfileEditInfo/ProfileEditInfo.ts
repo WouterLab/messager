@@ -41,21 +41,29 @@ export class ProfileEditInfo extends Block {
           display_name,
         };
 
-        updateUserInfo(data);
+        updateUserInfo(data).then(() => this.props.onBack());
       },
     });
   }
 
   protected render(): string {
-    const { image, email, login, first_name, second_name, display_name, phone } = this.props;
+    const {
+      image,
+      email,
+      login,
+      first_name,
+      second_name,
+      display_name,
+      phone,
+    } = this.props;
+
+    const noDisplayName = display_name === "null" || !display_name;
 
     return `
     <div class="profileInfo">
     <div class="profileInfoTop">
-        <div class="profileInfoImg noClick">
-        ${image !== "null" ? '<img src="${image}" alt="profile-image">' : ""}
-        </div>
-        <div>${display_name}</div>
+    {{{ ProfileAvatar image="${image}" }}}
+    <div>${noDisplayName ? "" : display_name}</div>
     </div>
     <div class="profileInfoRows">
         <div class="profileInfoRow">
@@ -83,7 +91,9 @@ export class ProfileEditInfo extends Block {
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Отображаемое имя</span>
-            {{{ ProfileInput value="${display_name}" type="text" name="display_name" 
+            {{{ ProfileInput value="${
+              noDisplayName ? "" : display_name
+            }" type="text" name="display_name" 
             onBlur=onBlurValidate onChange=onChangeInput ref="display_name" }}}
         </div>
         {{> Divider}}

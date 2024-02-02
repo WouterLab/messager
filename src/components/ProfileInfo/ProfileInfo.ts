@@ -16,13 +16,23 @@ export class ProfileInfo extends Block {
   }
 
   protected render(): string {
-    const { image, email, login, first_name, second_name, display_name, phone } = this.props;
+    const {
+      image,
+      email,
+      login,
+      first_name,
+      second_name,
+      display_name,
+      phone,
+    } = this.props;
+
+    const noDisplayName = display_name === "null" || !display_name;
 
     return `
     <div class="profileInfo">
     <div class="profileInfoTop">
         {{{ ProfileAvatar image="${image}" }}}
-        <div>${display_name}</div>
+        <div>${noDisplayName ? "" : display_name}</div>
     </div>
     <div class="profileInfoRows">
         <div class="profileInfoRow">
@@ -47,7 +57,9 @@ export class ProfileInfo extends Block {
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Отображаемое имя</span>
-            <span class="grey">${display_name}</span>
+            <span class="grey">${
+              noDisplayName ? "Не указано" : display_name
+            }</span>
         </div>
         {{> Divider}}
         <div class="profileInfoRow">

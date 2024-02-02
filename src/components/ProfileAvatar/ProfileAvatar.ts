@@ -22,7 +22,11 @@ export class ProfileAvatar extends Block {
     const { image } = this.props;
 
     return `<div class="profileAvatar">
-    ${image !== "null" ? '<img src="${image}" alt="profile-image">' : ""}
+    ${
+      image !== "null"
+        ? '<img src="${image}" alt="profile-image">'
+        : '<img src="assets/image.png" style="width: 60px; height: 60px;" alt="profile-image">'
+    }
     <div class="profileAvatarHover">
         <span>Новое фото</span>
     </div>

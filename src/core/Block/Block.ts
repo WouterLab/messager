@@ -8,15 +8,15 @@ export interface RefElement extends Element {
   name: string;
 }
 
-export interface Props {
-  [key: string]: any;
-  __refs?: Refs;
-}
-
 interface Refs {
   [key: string]: {
     element: RefElement;
   };
+}
+
+export interface Props {
+  [key: string]: any;
+  __refs?: Refs;
 }
 
 interface ChildBlock {

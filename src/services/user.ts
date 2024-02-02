@@ -5,15 +5,14 @@ import { getUser } from "./auth";
 
 const userApi = new UserApi();
 
-const updateUser = async (data: UpdateInfo) => {
-  const response = await userApi.updateInfo(data);
+const update = async (data: UpdateInfo) => {
+  const response = await userApi.update(data);
   if (apiHasError(response)) {
     throw Error(response.reason);
   }
+  const user = await getUser();
 
-  const me = await getUser();
-
-  window.store.set({ user: me });
+  window.store.set({ user });
 };
 
-export { updateUser };
+export { update };

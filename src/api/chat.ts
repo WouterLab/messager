@@ -1,7 +1,5 @@
-import { HTTPTransport } from "#core/HTTPTransport/HTTPTransport";
+import { chatApi } from "#core/HTTPTransport/HTTPTransport";
 import { APIError, ChatDTO, CreateChat } from "./types";
-
-const chatApi = new HTTPTransport("/chats");
 
 export class ChatApi {
   async create(data: CreateChat): Promise<void | APIError> {

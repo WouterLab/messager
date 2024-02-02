@@ -1,7 +1,11 @@
-import { HTTPTransport } from "#core/HTTPTransport/HTTPTransport";
-import { APIError, CreateUser, LoginRequestData, SignUpResponse, UserDTO } from "./types";
-
-const authApi = new HTTPTransport("/auth");
+import { authApi } from "#core/HTTPTransport/HTTPTransport";
+import {
+  APIError,
+  CreateUser,
+  LoginRequestData,
+  SignUpResponse,
+  UserDTO,
+} from "./types";
 
 export class AuthApi {
   async create(data: CreateUser): Promise<SignUpResponse> {
