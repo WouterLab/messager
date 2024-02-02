@@ -3,7 +3,7 @@ import { APIError, CreateUser, LoginRequestData, SignUpResponse, UserDTO } from 
 
 const authApi = new HTTPTransport("/auth");
 
-export default class AuthApi {
+export class AuthApi {
   async create(data: CreateUser): Promise<SignUpResponse> {
     return authApi.post<SignUpResponse>("/signup", { data });
   }

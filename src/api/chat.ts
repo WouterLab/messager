@@ -3,7 +3,7 @@ import { APIError, ChatDTO, CreateChat } from "./types";
 
 const chatApi = new HTTPTransport("/chats");
 
-export default class ChatApi {
+export class ChatApi {
   async create(data: CreateChat): Promise<void | APIError> {
     return chatApi.post<void>("/", { data });
   }

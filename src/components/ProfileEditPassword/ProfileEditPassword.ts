@@ -24,13 +24,15 @@ export class ProfileEditPassword extends Block {
   }
 
   protected render(): string {
+    const { image } = this.props;
+
     return `
     <div class="profileInfo">
     <div class="profileInfoTop">
         <div class="profileInfoImg noClick">
-            <img src="{{img}}" alt="profile-image">
+        ${image !== "null" ? '<img src="${image}" alt="profile-image">' : ""}
         </div>
-        <div>{{displayedName}}</div>
+        <div>{{display_name}}</div>
     </div>
     <div class="profileInfoRows">
         <div class="profileInfoRow">
@@ -50,6 +52,8 @@ export class ProfileEditPassword extends Block {
             placeholder="•••••••••••••" type="password" onBlur=onValidatePassword name="newPassword" }}}
         </div>
     </div>
+    <div class="changeInfoSave">{{{ Button onClick=onSavePassword
+      text="Сохранить" id="profile-save-pass" }}}</div>
 </div>
     `;
   }

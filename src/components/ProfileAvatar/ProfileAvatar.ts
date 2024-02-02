@@ -22,11 +22,11 @@ export class ProfileAvatar extends Block {
     const { image } = this.props;
 
     return `<div class="profileAvatar">
-    <img src="${image}" alt="profile-image">
+    ${image !== "null" ? '<img src="${image}" alt="profile-image">' : ""}
     <div class="profileAvatarHover">
         <span>Новое фото</span>
     </div>
-    <input id="avatar-input" class="profileAvatarFile" type="file" name="avatar" />
+    <input id="avatar-input" class="profileAvatarFile" type="file" name="avatar" style="display: none" />
     </div>
     `;
   }

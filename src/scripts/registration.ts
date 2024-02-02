@@ -1,7 +1,7 @@
 import { RefElement } from "#core/Block/Block";
-import { router } from "src/main";
-import { PagesUrls } from "#types/types";
 import { validateInput } from "#utils/utils";
+import { CreateUser } from "#api/types";
+import { signup } from "#services/auth";
 
 export const clearErrorMessage = (errorLabel: HTMLElement) => {
   errorLabel.innerText = "";
@@ -15,11 +15,11 @@ const clearError = (inputs: RefElement[]) => {
   }, 3000);
 };
 
-export const registration = (
+export const registration = async (
   emailInput: RefElement,
   loginInput: RefElement,
-  fnameInput: RefElement,
-  snameInput: RefElement,
+  first_nameInput: RefElement,
+  second_nameInput: RefElement,
   phoneInput: RefElement,
   passwordInput: RefElement,
   secPasswordInput: RefElement,
@@ -27,8 +27,8 @@ export const registration = (
   const inputsToCheck = [
     emailInput,
     loginInput,
-    fnameInput,
-    snameInput,
+    first_nameInput,
+    second_nameInput,
     phoneInput,
     passwordInput,
     secPasswordInput,
@@ -54,9 +54,16 @@ export const registration = (
   }
 
   if (isValid) {
-    inputsToCheck.forEach((input) => console.log(input.value));
+    const data: CreateUser = {
+      login: loginInput.value,
+      first_name: first_nameInput.value,
+      second_name: second_nameInput.value,
+      phone: phoneInput.value,
+      email: emailInput.value,
+      password: passwordInput.value,
+    };
 
-    router.go(PagesUrls.MainPage);
+    await signup(data);
   } else {
     clearError(inputsToCheck);
   }

@@ -4,9 +4,9 @@ type ProfileInfoProps = {
   image: string;
   email: string;
   login: string;
-  fname: string;
-  lname: string;
-  displayedName: string;
+  first_name: string;
+  second_name: string;
+  display_name: string;
   phone: string;
 };
 
@@ -16,14 +16,13 @@ export class ProfileInfo extends Block {
   }
 
   protected render(): string {
-    const { image, email, login, fname, lname, displayedName, phone } =
-      this.props;
+    const { image, email, login, first_name, second_name, display_name, phone } = this.props;
 
     return `
     <div class="profileInfo">
     <div class="profileInfoTop">
         {{{ ProfileAvatar image="${image}" }}}
-        <div>${displayedName}</div>
+        <div>${display_name}</div>
     </div>
     <div class="profileInfoRows">
         <div class="profileInfoRow">
@@ -38,17 +37,17 @@ export class ProfileInfo extends Block {
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Имя</span>
-            <span class="grey">${fname}</span>
+            <span class="grey">${first_name}</span>
         </div>
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Фамилия</span>
-            <span class="grey">${lname}</span>
+            <span class="grey">${second_name}</span>
         </div>
         {{> Divider}}
         <div class="profileInfoRow">
             <span class="profileInfoRowTitle">Отображаемое имя</span>
-            <span class="grey">${displayedName}</span>
+            <span class="grey">${display_name}</span>
         </div>
         {{> Divider}}
         <div class="profileInfoRow">

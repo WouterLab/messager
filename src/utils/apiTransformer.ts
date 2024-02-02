@@ -1,6 +1,6 @@
 import { HOST } from "#constants/constants";
-import { ChatDTO, UserDTO } from "#api/types";
-import { Chat, User } from "#types/types";
+import { ChatDTO } from "#api/types";
+import { Chat } from "#types/types";
 
 const buildPathToResource = (resource: string | null) => {
   if (!resource) {
@@ -8,19 +8,6 @@ const buildPathToResource = (resource: string | null) => {
   }
 
   return `${HOST}/resources/${resource}`;
-};
-
-export const transformUser = (data: UserDTO): User => {
-  return {
-    id: data.id,
-    login: data.login,
-    firstName: data.first_name,
-    secondName: data.second_name,
-    displayName: data.display_name,
-    avatar: data.avatar,
-    phone: data.phone,
-    email: data.email,
-  };
 };
 
 export const transformChats = (data: ChatDTO[]): Chat[] => {
@@ -36,9 +23,9 @@ export const transformChats = (data: ChatDTO[]): Chat[] => {
           user: {
             id: chat.last_message.user.id,
             login: chat.last_message.user.login,
-            firstName: chat.last_message.user.first_name,
-            secondName: chat.last_message.user.second_name,
-            displayName: chat.last_message.user.display_name,
+            first_name: chat.last_message.user.first_name,
+            second_name: chat.last_message.user.second_name,
+            display_name: chat.last_message.user.display_name,
             avatar: chat.last_message.user.avatar,
             phone: chat.last_message.user.phone,
             email: chat.last_message.user.email,

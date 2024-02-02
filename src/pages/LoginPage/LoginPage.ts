@@ -28,6 +28,7 @@ class LoginPage extends Block {
               {{{ Input placeholder="Пароль" name="password" ref="password" type="password" id="auth-password" }}}
           </div>
           <div class="formButtons">
+              <p class="errorMessage" id="login-message"></p>
               {{{ Button text="Войти" id="auth-submit" type="submit" onClick=onLogin }}}
               {{{ ButtonGhost text="Нет аккаунта?" onClick=onSignUp }}}
           </div>

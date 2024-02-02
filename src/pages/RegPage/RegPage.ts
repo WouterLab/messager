@@ -17,15 +17,15 @@ class RegPage extends Block {
         const passwordInput = this.refs.password.element;
         const secPasswordInput = this.refs.secPassword.element;
         const emailInput = this.refs.email.element;
-        const fnameInput = this.refs.fname.element;
-        const snameInput = this.refs.sname.element;
+        const first_nameInput = this.refs.first_name.element;
+        const second_nameInput = this.refs.second_name.element;
         const phoneInput = this.refs.phone.element;
 
         registration(
           emailInput,
           loginInput,
-          fnameInput,
-          snameInput,
+          first_nameInput,
+          second_nameInput,
           phoneInput,
           passwordInput,
           secPasswordInput,
@@ -56,9 +56,9 @@ class RegPage extends Block {
       {{{ Input placeholder="Логин" onChange=onChangeInput 
       name="login" id="reg-login" ref="login" onBlur=onBlurValidate }}}
       {{{ Input placeholder="Имя" onChange=onChangeInput 
-      name="first_name" id="reg-fname" ref="fname" onBlur=onBlurValidate }}}
+      name="first_name" id="reg-first_name" ref="first_name" onBlur=onBlurValidate }}}
       {{{ Input placeholder="Фамилия" onChange=onChangeInput 
-      name="second_name" id="reg-sname" ref="sname" onBlur=onBlurValidate }}}
+      name="second_name" id="reg-second_name" ref="second_name" onBlur=onBlurValidate }}}
       {{{ Input placeholder="Телефон" onChange=onChangeInput 
       name="phone" type="phone" id="reg-phone" ref="phone" onBlur=onBlurValidate }}}
       {{{ Input placeholder="Пароль" onChange=onChangeInput name="password" type="password" 

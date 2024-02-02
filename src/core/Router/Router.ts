@@ -6,11 +6,7 @@ class Route {
   private _block: Block | null;
   private _props: { rootQuery: string };
 
-  constructor(
-    pathname: string,
-    view: { new (): Block },
-    props: { rootQuery: string },
-  ) {
+  constructor(pathname: string, view: { new (): Block }, props: { rootQuery: string }) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;

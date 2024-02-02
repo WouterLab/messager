@@ -1,9 +1,8 @@
-import AuthApi from "#api/auth";
-import { CreateUser, LoginRequestData, UserDTO } from "#api/types";
+import { AuthApi } from "#api/auth";
+import { CreateUser, LoginRequestData } from "#api/types";
 import { router } from "src/main";
 import { PagesUrls } from "#types/types";
 import { apiHasError } from "#utils/apiHasError";
-import { transformUser } from "#utils/apiTransformer";
 
 const authApi = new AuthApi();
 
@@ -13,7 +12,7 @@ const getUser = async () => {
     throw Error(responseUser.reason);
   }
 
-  return transformUser(responseUser as UserDTO);
+  return responseUser;
 };
 
 const signin = async (data: LoginRequestData) => {

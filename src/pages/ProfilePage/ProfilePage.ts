@@ -18,17 +18,14 @@ class ProfilePage extends Block {
       onLogOut: () => {
         router.go(PagesUrls.LoginPage);
       },
-      onSaveInfo: () => {
-        this.setProps({ currentView: "default" });
-      },
       currentView: "default",
-      image: "assets/dog2.jpg",
-      email: "mail@mail.ru",
-      login: "boymep",
-      fname: "Danil",
-      lname: "Panov",
-      displayedName: "Boymep",
-      phone: "+7 (999) 999 99 99",
+      image: window.store.getState().user?.avatar,
+      email: window.store.getState().user?.email,
+      login: window.store.getState().user?.login,
+      first_name: window.store.getState().user?.first_name,
+      second_name: window.store.getState().user?.second_name,
+      display_name: window.store.getState().user?.display_name,
+      phone: window.store.getState().user?.phone,
     });
   }
 
@@ -38,9 +35,8 @@ class ProfilePage extends Block {
       {{{ BackButton onClick=onReturnBack }}}
       <div class="changeInfo">
           {{{ ProfileEditInfo image="${this.props.image}" email="${this.props.email}" 
-          login="${this.props.login}" fname="${this.props.fname}" lname="${this.props.lname}" 
-          displayedName="${this.props.displayedName}" phone="${this.props.phone}" }}}
-          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" id="profile-save-info" }}}</div>
+          login="${this.props.login}" first_name="${this.props.first_name}" second_name="${this.props.second_name}" 
+          display_name="${this.props.display_name}" phone="${this.props.phone}" }}}
       </div>
       <div class="changeInfoLogo">{{> Logo}}</div>
       </div>
@@ -49,8 +45,7 @@ class ProfilePage extends Block {
       return `<div class="changePassWrapper">
       {{{ BackButton onClick=onReturnBack }}}
       <div class="changePass">
-          {{{ ProfileEditPassword img="assets/dog2.jpg" displayedName="Boymep" }}}
-          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" id="profile-save-pass" }}}</div>
+          {{{ ProfileEditPassword img="${this.props.image}" display_name="Boymep" }}}
       </div>
       <div class="changePassLogo">{{> Logo}}</div>
       </div>
@@ -62,9 +57,9 @@ class ProfilePage extends Block {
         {{{ ProfileInfo image="${this.props.image}"
         email="${this.props.email}"
         login="${this.props.login}"
-        fname="${this.props.fname}"
-        lname="${this.props.lname}"
-        displayedName="${this.props.displayedName}"
+        first_name="${this.props.first_name}"
+        second_name="${this.props.second_name}"
+        display_name="${this.props.display_name}"
         phone="${this.props.phone}"
         }}}
         {{{ ButtonGhost onClick=onChangeData id="change-info" text="Изменить данные" }}}

@@ -1,6 +1,6 @@
 import { HOST } from "#constants/constants";
 
-enum METHOD {
+export enum METHOD {
   GET = "GET",
   POST = "POST",
   PUT = "PUT",
@@ -22,11 +22,19 @@ export class HTTPTransport {
   }
 
   get<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, { ...options, method: METHOD.GET });
+    return this.request<TResponse>(url, { ...options, method: METHOD.GET });
   }
 
   post<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, { ...options, method: METHOD.POST });
+    return this.request<TResponse>(url, { ...options, method: METHOD.POST });
+  }
+
+  put<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
+    return this.request<TResponse>(url, { ...options, method: METHOD.PUT });
+  }
+
+  patch<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
+    return this.request<TResponse>(url, { ...options, method: METHOD.PATCH });
   }
 
   async request<TResponse>(
@@ -35,7 +43,7 @@ export class HTTPTransport {
   ): Promise<TResponse> {
     const { method, data } = options;
 
-    const response = await fetch(url, {
+    const response = await fetch(`${this.apiUrl}${url}`, {
       method,
       credentials: "include",
       mode: "cors",
@@ -44,7 +52,7 @@ export class HTTPTransport {
     });
 
     const isJson = response.headers.get("content-type")?.includes("application/json");
-    const resultData = (await isJson) ? response.json() : null;
+    const resultData = isJson ? response.json() : null;
 
     return resultData as unknown as TResponse;
   }

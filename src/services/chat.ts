@@ -1,4 +1,4 @@
-import ChatApi from "#api/chat";
+import { ChatApi } from "#api/chat";
 import { apiHasError } from "#utils/apiHasError";
 import { transformChats } from "#utils/apiTransformer";
 
