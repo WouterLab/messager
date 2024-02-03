@@ -23,13 +23,6 @@ class ProfilePage extends Block {
         this.setProps({ currentView: "default" });
       },
       currentView: "default",
-      image: window.store.getState().user?.avatar,
-      email: window.store.getState().user?.email,
-      login: window.store.getState().user?.login,
-      first_name: window.store.getState().user?.first_name,
-      second_name: window.store.getState().user?.second_name,
-      display_name: window.store.getState().user?.display_name,
-      phone: window.store.getState().user?.phone,
     });
   }
 
@@ -38,7 +31,7 @@ class ProfilePage extends Block {
       return `<div class="changeInfoWrapper">
       {{{ BackButton onClick=onBack }}}
       <div class="changeInfo">
-          {{{ ProfileEditInfo image="${this.props.image}" email="${this.props.email}" 
+          {{{ ProfileEditInfo image="${this.props.avatar}" email="${this.props.email}" 
           login="${this.props.login}" first_name="${this.props.first_name}" second_name="${this.props.second_name}" 
           display_name="${this.props.display_name}" phone="${this.props.phone}" onBack=onBack }}}
       </div>
@@ -49,7 +42,8 @@ class ProfilePage extends Block {
       return `<div class="changePassWrapper">
       {{{ BackButton onClick=onBack }}}
       <div class="changePass">
-          {{{ ProfileEditPassword image="${this.props.image}" display_name="Boymep" onBack=onBack }}}
+          {{{ ProfileEditPassword image="${this.props.avatar}"
+           display_name="${this.props.display_name}" onBack=onBack }}}
       </div>
       <div class="changePassLogo">{{> Logo}}</div>
       </div>
@@ -58,7 +52,7 @@ class ProfilePage extends Block {
       return `<div class="profileWrapper">
     {{{ BackButton onClick=onReturnBack }}}
     <div class="profile">
-        {{{ ProfileInfo image="${this.props.image}"
+        {{{ ProfileInfo image="${this.props.avatar}"
         email="${this.props.email}"
         login="${this.props.login}"
         first_name="${this.props.first_name}"
@@ -77,4 +71,4 @@ class ProfilePage extends Block {
   }
 }
 
-export default connect(ProfilePage, (props) => props);
+export default connect(ProfilePage, ({ user }) => ({ ...user }));
