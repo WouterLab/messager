@@ -22,8 +22,10 @@ export type MessageType = {
 export type ChatType = {
   img: string;
   title: string;
-  message: string;
-  time: string;
+  lastMessage: {
+    message: string;
+    time: string;
+  };
   count: string;
   id: string;
 };

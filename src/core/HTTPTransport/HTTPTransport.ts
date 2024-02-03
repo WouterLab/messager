@@ -21,31 +21,19 @@ export class HTTPTransport {
     this.apiUrl = `${HOST}${apiPath}`;
   }
 
-  get<TResponse>(
-    url: string,
-    options: OptionsWithoutMethod = {},
-  ): Promise<TResponse> {
+  get<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
     return this.request<TResponse>(url, { ...options, method: METHOD.GET });
   }
 
-  post<TResponse>(
-    url: string,
-    options: OptionsWithoutMethod = {},
-  ): Promise<TResponse> {
+  post<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
     return this.request<TResponse>(url, { ...options, method: METHOD.POST });
   }
 
-  put<TResponse>(
-    url: string,
-    options: OptionsWithoutMethod = {},
-  ): Promise<TResponse> {
+  put<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
     return this.request<TResponse>(url, { ...options, method: METHOD.PUT });
   }
 
-  patch<TResponse>(
-    url: string,
-    options: OptionsWithoutMethod = {},
-  ): Promise<TResponse> {
+  patch<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
     return this.request<TResponse>(url, { ...options, method: METHOD.PATCH });
   }
 
@@ -63,12 +51,24 @@ export class HTTPTransport {
       body: data ? JSON.stringify(data) : null,
     });
 
-    const isJson = response.headers
-      .get("content-type")
-      ?.includes("application/json");
+    const isJson = response.headers.get("content-type")?.includes("application/json");
     const resultData = isJson ? response.json() : null;
 
     return resultData as unknown as TResponse;
+  }
+
+  async fileRequset(url: string, form: FormData) {
+    const response = await fetch(`${this.apiUrl}${url}`, {
+      method: "PUT",
+      credentials: "include",
+      mode: "cors",
+      body: form,
+    });
+
+    const isJson = response.headers.get("content-type")?.includes("application/json");
+    const resultData = isJson ? response.json() : null;
+
+    return resultData;
   }
 }
 

@@ -20,6 +20,7 @@ export class Sidebar extends Block {
         {{{ Search id="chat-search" placeholder="Поиск" name="search" }}}
     </div>
     ${this.children}
+    <div class="addChat"><img class="plus" src="assets/plus.png" alt="add-chat"></div>
     </aside>
     `;
   }
