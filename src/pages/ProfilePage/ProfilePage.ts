@@ -1,12 +1,15 @@
-import Block from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import Block, { Props } from "#core/Block/Block";
+import { router } from "src/main";
 import { PagesUrls } from "#types/types";
+import { connect } from "#utils/connect";
+import { logout } from "#services/auth";
 
-export class ProfilePage extends Block {
-  constructor() {
+class ProfilePage extends Block {
+  constructor(props: Props) {
     super({
+      ...props,
       onReturnBack: () => {
-        navigate(PagesUrls.MainPage);
+        router.go(PagesUrls.MainPage);
       },
       onChangeData: () => {
         this.setProps({ currentView: "edit-info" });
@@ -14,42 +17,34 @@ export class ProfilePage extends Block {
       onChangePassword: () => {
         this.setProps({ currentView: "edit-pass" });
       },
-      onLogOut: () => {
-        navigate(PagesUrls.LoginPage);
+      onLogOut: async () => {
+        await logout();
       },
-      onSaveInfo: () => {
+      onBack: () => {
         this.setProps({ currentView: "default" });
       },
       currentView: "default",
-      image: "assets/dog2.jpg",
-      email: "mail@mail.ru",
-      login: "boymep",
-      fname: "Danil",
-      lname: "Panov",
-      displayedName: "Boymep",
-      phone: "+7 (999) 999 99 99",
     });
   }
 
   protected render(): string {
     if (this.props.currentView === "edit-info") {
       return `<div class="changeInfoWrapper">
-      {{{ BackButton onClick=onReturnBack }}}
+      {{{ BackButton onClick=onBack }}}
       <div class="changeInfo">
-          {{{ ProfileEditInfo image="${this.props.image}" email="${this.props.email}" 
-          login="${this.props.login}" fname="${this.props.fname}" lname="${this.props.lname}" 
-          displayedName="${this.props.displayedName}" phone="${this.props.phone}" }}}
-          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" id="profile-save-info" }}}</div>
+          {{{ ProfileEditInfo image="${this.props.avatar}" email="${this.props.email}" 
+          login="${this.props.login}" first_name="${this.props.first_name}" second_name="${this.props.second_name}" 
+          display_name="${this.props.display_name}" phone="${this.props.phone}" onBack=onBack }}}
       </div>
       <div class="changeInfoLogo">{{> Logo}}</div>
       </div>
       `;
     } else if (this.props.currentView === "edit-pass") {
       return `<div class="changePassWrapper">
-      {{{ BackButton onClick=onReturnBack }}}
+      {{{ BackButton onClick=onBack }}}
       <div class="changePass">
-          {{{ ProfileEditPassword img="assets/dog2.jpg" displayedName="Boymep" }}}
-          <div class="changeInfoSave">{{{ Button onClick=onSaveInfo text="Сохранить" id="profile-save-pass" }}}</div>
+          {{{ ProfileEditPassword image="${this.props.avatar}"
+           display_name="${this.props.display_name}" onBack=onBack }}}
       </div>
       <div class="changePassLogo">{{> Logo}}</div>
       </div>
@@ -58,12 +53,12 @@ export class ProfilePage extends Block {
       return `<div class="profileWrapper">
     {{{ BackButton onClick=onReturnBack }}}
     <div class="profile">
-        {{{ ProfileInfo image="${this.props.image}"
+        {{{ ProfileInfo image="${this.props.avatar}"
         email="${this.props.email}"
         login="${this.props.login}"
-        fname="${this.props.fname}"
-        lname="${this.props.lname}"
-        displayedName="${this.props.displayedName}"
+        first_name="${this.props.first_name}"
+        second_name="${this.props.second_name}"
+        display_name="${this.props.display_name}"
         phone="${this.props.phone}"
         }}}
         {{{ ButtonGhost onClick=onChangeData id="change-info" text="Изменить данные" }}}
@@ -76,3 +71,5 @@ export class ProfilePage extends Block {
     </div>`;
   }
 }
+
+export default connect(ProfilePage, ({ user }) => ({ ...user }));

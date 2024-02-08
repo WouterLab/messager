@@ -1,11 +1,11 @@
 import Block from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { PagesUrls } from "#types/types";
 
-export class Page404 extends Block {
+class Page404 extends Block {
   protected init(): void {
     setTimeout(() => {
-      navigate(PagesUrls.MainPage);
+      router.go(PagesUrls.MainPage);
     }, 3000);
   }
 
@@ -17,3 +17,5 @@ export class Page404 extends Block {
     {{/AuthPage}}`;
   }
 }
+
+export default Page404;

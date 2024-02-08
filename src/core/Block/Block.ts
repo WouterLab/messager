@@ -8,15 +8,15 @@ export interface RefElement extends Element {
   name: string;
 }
 
-interface Props {
-  [key: string]: any;
-  __refs?: Refs;
-}
-
 interface Refs {
   [key: string]: {
     element: RefElement;
   };
+}
+
+export interface Props {
+  [key: string]: any;
+  __refs?: Refs;
 }
 
 interface ChildBlock {
@@ -229,7 +229,7 @@ class Block {
   }
 
   show() {
-    this.getContent()!.style.display = "block";
+    this.getContent()!.style.removeProperty("display");
   }
 
   hide() {

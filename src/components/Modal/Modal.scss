@@ -1,0 +1,34 @@
+.modal {
+  &Wrapper {
+    position: fixed;
+    cursor: default;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    z-index: 999;
+  }
+
+  &Content {
+    padding: 30px;
+    border-radius: 8px;
+    background-color: $white;
+    color: $black;
+    width: 600px;
+    height: 400px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    display: flex;
+    gap: 30px;
+  }
+
+  &Title {
+    font-size: 32px;
+  }
+}

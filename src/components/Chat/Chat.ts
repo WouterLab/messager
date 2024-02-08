@@ -1,18 +1,13 @@
 import Block from "#core/Block/Block";
-import { navigate } from "#core/navigate";
-import { ChatType, PagesUrls } from "#types/types";
+import { ChatType } from "#types/types";
+import { getChatData } from "#services/chat";
 
 export class Chat extends Block {
   constructor(props: ChatType) {
     super({
       ...props,
-      onChatChoose: () => {
-        navigate(PagesUrls.ChatPage);
-        const chatWindow = <HTMLDivElement>(
-          document.getElementById("chat-window")
-        );
-        chatWindow.scroll({ behavior: "smooth", top: chatWindow.scrollHeight });
-        // behavior - только для наглядности пока один чат на всех
+      onChatChoose: async () => {
+        await getChatData(this.props.id);
       },
     });
   }
@@ -24,20 +19,28 @@ export class Chat extends Block {
   }
 
   protected render(): string {
-    const { img, title, message, time, count, id } = this.props;
+    const { img, title, lastMessage, count, id } = this.props;
 
     return `
     <div class="chat" id="${id}">
     <div class="chatUser">
-        <img class="chatImg" src="${img}" alt="chat">
+        ${
+          img
+            ? `<img class="chatImg" src="${img}" alt="chat">`
+            : '<div class="mock"></div>'
+        }
         <div class="chatMiddle">
             <span class="chatTitle">${title}</span>
-            <div class="chatLast">${message}</div>
+            ${
+              lastMessage
+                ? `<div class="chatLast">${lastMessage.message}</div>`
+                : "Нет сообщений"
+            }
         </div>
     </div>
     <div class="chatLeft">
-        <span class="chatTime">${time}</span>
-        <div class="chatCount">${count}</div>
+        ${lastMessage ? `<div class="chatCount">${lastMessage.time}</div>` : ""}
+        ${count ? `<div class="chatCount">${count}</div>` : ""}
     </div>
 </div>
 `;

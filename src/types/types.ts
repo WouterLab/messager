@@ -1,7 +1,5 @@
-import Block from "#core/Block/Block";
-
 export interface Page {
-  [key: string]: new () => Block;
+  [key: string]: any;
 }
 
 export enum PagesUrls {
@@ -11,8 +9,6 @@ export enum PagesUrls {
   ChatPage = "chat",
   Page404 = "404",
   ProfilePage = "profile",
-  EditInfoPage = "edit-info",
-  EditPassPage = "edit-pass",
 }
 
 export type MessageType = {
@@ -26,8 +22,10 @@ export type MessageType = {
 export type ChatType = {
   img: string;
   title: string;
-  message: string;
-  time: string;
+  lastMessage: {
+    message: string;
+    time: string;
+  };
   count: string;
   id: string;
 };
@@ -37,8 +35,40 @@ export type ProfileProps = {
   name: string;
   email: string;
   login: string;
-  fname: string;
-  lname: string;
-  displayedName: string;
+  first_name: string;
+  second_name: string;
+  display_name: string;
   phone: string;
+};
+
+export type User = {
+  id: number;
+  login: string;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  avatar: string;
+  phone: string;
+  email: string;
+};
+
+type LastMessage = {
+  user: User;
+  time: string;
+  content: string;
+};
+
+export type Chat = {
+  id: number;
+  title: string;
+  avatar: Nullable<string>;
+  unreadCount: number;
+  lastMessage: LastMessage | null;
+};
+
+export type AppState = {
+  error: string | null;
+  user: User | null;
+  isOpenDialogChat: boolean;
+  chats: Chat[];
 };

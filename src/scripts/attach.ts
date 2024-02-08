@@ -1,8 +1,6 @@
 export const attachFile = () => {
   const attachModal = <HTMLDivElement>document.getElementById("attach-modal");
 
-  console.log(attachModal);
-
   if (attachModal.classList.contains("hidden")) {
     attachModal.classList.remove("hidden");
     attachModal.classList.remove("hideAnimation");

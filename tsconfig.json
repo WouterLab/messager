@@ -13,6 +13,8 @@
       "#constants/*": ["src/constants/*"],
       "#types/*": ["src/types/*"],
       "#scripts/*": ["src/scripts/*"],
+      "#services/*": ["src/services/*"],
+      "#api/*": ["src/api/*"],
       "#styles/*": ["src/styles/*"],
       "#utils/*": ["src/utils/*"],
       "#core/*": ["src/core/*"]
@@ -23,5 +25,5 @@
     "sourceMap": true,
     "strictNullChecks": true
   },
-  "include": ["src", "src/types/index.d.ts"]
+  "include": ["src", "src/types/index.d.ts", "src/main.ts"]
 }

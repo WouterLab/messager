@@ -1,4 +1,6 @@
-enum METHODS {
+import { HOST } from "#constants/constants";
+
+export enum METHOD {
   GET = "GET",
   POST = "POST",
   PUT = "PUT",
@@ -6,87 +8,72 @@ enum METHODS {
   DELETE = "DELETE",
 }
 
-type HTTPMethod = (
-  url: string,
-  options?: HttpRequestOptions,
-) => Promise<XMLHttpRequest>;
+type Options = {
+  method: METHOD;
+  data?: any;
+};
+
+type OptionsWithoutMethod = Omit<Options, "method">;
 
 export class HTTPTransport {
-  get: HTTPMethod = (url, options = {}) =>
-    this.request(url, { ...options, method: METHODS.GET });
-  put: HTTPMethod = (url, options = {}) =>
-    this.request(url, { ...options, method: METHODS.PUT });
-  post: HTTPMethod = (url, options = {}) =>
-    this.request(url, { ...options, method: METHODS.POST });
-  delete: HTTPMethod = (url, options = {}) =>
-    this.request(url, { ...options, method: METHODS.DELETE });
+  private apiUrl: string = "";
+  constructor(apiPath: string) {
+    this.apiUrl = `${HOST}${apiPath}`;
+  }
 
-  request(
+  get<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
+    return this.request<TResponse>(url, { ...options, method: METHOD.GET });
+  }
+
+  post<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
+    return this.request<TResponse>(url, { ...options, method: METHOD.POST });
+  }
+
+  put<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
+    return this.request<TResponse>(url, { ...options, method: METHOD.PUT });
+  }
+
+  patch<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
+    return this.request<TResponse>(url, { ...options, method: METHOD.PATCH });
+  }
+
+  async request<TResponse>(
     url: string,
-    options: HttpRequestOptions = { method: METHODS.GET },
-  ): Promise<XMLHttpRequest> {
-    const { method, data, timeout, headers } = options;
+    options: Options = { method: METHOD.GET },
+  ): Promise<TResponse> {
+    const { method, data } = options;
 
-    return new Promise<XMLHttpRequest>((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-
-      if (method === METHODS.GET && data) {
-        url += `?${this.queryStringify(data)}`;
-      }
-
-      if (method) xhr.open(method, url);
-
-      xhr.timeout = timeout || 0;
-
-      if (headers) {
-        Object.keys(headers).forEach((key) => {
-          xhr.setRequestHeader(key, headers[key]);
-        });
-      }
-
-      xhr.onload = function () {
-        resolve(xhr);
-      };
-
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-      xhr.ontimeout = function () {
-        reject(new Error("Request timeout"));
-      };
-
-      if (method === METHODS.GET || !data) {
-        xhr.send();
-      } else {
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify(data));
-      }
+    const response = await fetch(`${this.apiUrl}${url}`, {
+      method,
+      credentials: "include",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: data ? JSON.stringify(data) : null,
     });
+
+    const isJson = response.headers.get("content-type")?.includes("application/json");
+    const resultData = isJson ? response.json() : null;
+
+    return resultData as unknown as TResponse;
   }
 
-  private queryStringify(data: Record<string, any>): string {
-    const result = Object.keys(data)
-      .map((key) => {
-        const value = data[key];
+  async fileRequset(url: string, form: FormData) {
+    const response = await fetch(`${this.apiUrl}${url}`, {
+      method: "PUT",
+      credentials: "include",
+      mode: "cors",
+      body: form,
+    });
 
-        if (typeof value === "object") {
-          if (Array.isArray(value)) {
-            return `${key}=${value.join(",")}`;
-          } else {
-            return `${key}=${value.toString()}`;
-          }
-        }
+    const isJson = response.headers.get("content-type")?.includes("application/json");
+    const resultData = isJson ? response.json() : null;
 
-        return `${key}=${value}`;
-      })
-      .join("&");
-
-    return result;
+    return resultData;
   }
 }
 
-interface HttpRequestOptions {
-  method?: METHODS;
-  data?: Record<string, any>;
-  timeout?: number;
-  headers?: Record<string, string>;
-}
+export const authApi = new HTTPTransport("/auth");
+
+export const chatApi = new HTTPTransport("/chats");
+
+export const userApi = new HTTPTransport("/user");

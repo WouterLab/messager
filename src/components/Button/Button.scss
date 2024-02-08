@@ -22,4 +22,13 @@
 
 .disabled {
   background-color: $grey;
+  cursor: default;
+
+  &:hover {
+    background-color: $grey;
+  }
+
+  &:active {
+    background-color: $grey;
+  }
 }

@@ -26,3 +26,6 @@ export { PropsButton } from "./PropsButton";
 export { SendButton } from "./SendButton";
 export { ProfileAvatar } from "./ProfileAvatar";
 export { ProfileInput } from "./ProfileInput";
+export { AddChatButton } from "./AddChatButton";
+export { Modal } from "./Modal";
+export { ModalBackdrop } from "./ModalBackdrop";

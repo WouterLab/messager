@@ -1,12 +1,12 @@
 import Block from "#core/Block/Block";
-import { navigate } from "#core/navigate";
+import { router } from "src/main";
 import { PagesUrls } from "#types/types";
 
 export class SidebarButton extends Block {
   constructor() {
     super({
       onProfileRedirect: () => {
-        navigate(PagesUrls.ProfilePage);
+        router.go(PagesUrls.ProfilePage);
       },
     });
   }
