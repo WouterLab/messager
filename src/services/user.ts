@@ -1,7 +1,6 @@
-import { UpdateInfo } from "#api/types";
+import { UpdateInfo, UpdatePassword } from "#api/types";
 import { UserApi } from "#api/user";
 import { apiHasError } from "#utils/apiHasError";
-import { getUser } from "./auth";
 
 const userApi = new UserApi();
 
@@ -10,9 +9,8 @@ const update = async (data: UpdateInfo) => {
   if (apiHasError(response)) {
     throw Error(response.reason);
   }
-  const user = await getUser();
 
-  window.store.set({ user });
+  window.store.set({ user: response });
 };
 
 const updateAvatar = async (form: FormData) => {
@@ -21,9 +19,14 @@ const updateAvatar = async (form: FormData) => {
     throw Error(response.reason);
   }
 
-  const user = await getUser();
-
-  window.store.set({ user });
+  window.store.set({ user: response });
 };
 
-export { update, updateAvatar };
+const changePassword = async (data: UpdatePassword) => {
+  const response = await userApi.password(data);
+  if (apiHasError(response)) {
+    return response.reason;
+  }
+};
+
+export { update, updateAvatar, changePassword };

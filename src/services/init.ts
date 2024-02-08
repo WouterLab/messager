@@ -20,6 +20,8 @@ const init = async () => {
   const chats = await getChats();
 
   window.store.set({ user: me, chats });
+  console.log(window.location.pathname);
+
   router.go(window.location.pathname.slice(1));
 };
 

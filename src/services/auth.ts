@@ -30,7 +30,7 @@ const signin = async (data: LoginRequestData) => {
 const signup = async (data: CreateUser) => {
   const response = await authApi.create(data);
   if (apiHasError(response)) {
-    throw Error(response.reason);
+    return response;
   }
 
   const me = await getUser();

@@ -2,6 +2,7 @@ import { RefElement } from "#core/Block/Block";
 import { validateInput } from "#utils/utils";
 import { CreateUser } from "#api/types";
 import { signup } from "#services/auth";
+import { apiHasError } from "#utils/apiHasError";
 
 export const clearErrorMessage = (errorLabel: HTMLElement) => {
   errorLabel.innerText = "";
@@ -63,7 +64,14 @@ export const registration = async (
       password: passwordInput.value,
     };
 
-    await signup(data);
+    const response = await signup(data);
+
+    if (apiHasError(response)) {
+      if (errorLabel) {
+        errorLabel.innerText = response.reason;
+      }
+      throw Error(response.reason);
+    }
   } else {
     clearError(inputsToCheck);
   }

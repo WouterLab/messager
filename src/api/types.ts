@@ -23,6 +23,11 @@ export type CreateUser = Omit<UserDTO, "avatar" | "display_name" | "id"> & {
 
 export type UpdateInfo = Omit<UserDTO, "avatar" | "id">;
 
+export type UpdatePassword = {
+  oldPassword: string;
+  newPassword: string;
+};
+
 export type CreateChat = {
   title: string;
 };

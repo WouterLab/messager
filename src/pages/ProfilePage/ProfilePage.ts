@@ -2,6 +2,7 @@ import Block, { Props } from "#core/Block/Block";
 import { router } from "src/main";
 import { PagesUrls } from "#types/types";
 import { connect } from "#utils/connect";
+import { logout } from "#services/auth";
 
 class ProfilePage extends Block {
   constructor(props: Props) {
@@ -16,8 +17,8 @@ class ProfilePage extends Block {
       onChangePassword: () => {
         this.setProps({ currentView: "edit-pass" });
       },
-      onLogOut: () => {
-        router.go(PagesUrls.LoginPage);
+      onLogOut: async () => {
+        await logout();
       },
       onBack: () => {
         this.setProps({ currentView: "default" });
