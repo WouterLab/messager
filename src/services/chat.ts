@@ -28,4 +28,18 @@ const createChat = async (title: string) => {
   window.store.set({ chats });
 };
 
-export { createChat, getChats };
+const getChatData = async (id: number) => {
+  const response = await chatApi.currentChat(id);
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+};
+
+const addUser = async () => {
+  const response = await chatApi.addUser();
+  if (apiHasError(response)) {
+    throw Error(response.reason);
+  }
+};
+
+export { createChat, getChats, getChatData, addUser };

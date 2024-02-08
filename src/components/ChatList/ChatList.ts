@@ -11,9 +11,9 @@ export class ChatList extends Block {
     super({
       ...props,
       chats: window.store.getState().chats,
-      onClick: async () => {
-        const chanIndex = window.store.getState().chats.length;
-        const chatTitle = "Чат номер " + chanIndex;
+      addChat: async () => {
+        const chatIndex = window.store.getState().chats.length;
+        const chatTitle = "Чат " + chatIndex;
         await createChat(chatTitle);
       },
     });
@@ -26,7 +26,7 @@ export class ChatList extends Block {
             {{{ Chat img=this.avatar title=this.title
             count=this.unread_count id=this.id }}}
         {{/each}}
-        {{{ AddChatButton onClick=onClick }}}
+        {{{ AddChatButton onClick=addChat }}}
     </div>
 `;
   }

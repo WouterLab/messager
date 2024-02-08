@@ -13,4 +13,8 @@ export class UserApi {
   async password(data: UpdatePassword): Promise<void | APIError> {
     return userApi.put("/password", { data });
   }
+
+  async find(login: string): Promise<UserDTO | APIError> {
+    return userApi.post("/search", { data: { login } });
+  }
 }

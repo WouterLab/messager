@@ -3,11 +3,18 @@ import Block from "#core/Block/Block";
 type ModalVariantProps = {
   img: string;
   text: string;
+  onClick: () => void;
 };
 
 export class ModalVariant extends Block {
   constructor(props: ModalVariantProps) {
     super(props);
+  }
+
+  protected init(): void {
+    this.props.events = {
+      click: this.props.onClick,
+    };
   }
 
   protected render(): string {

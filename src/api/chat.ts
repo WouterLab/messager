@@ -9,4 +9,12 @@ export class ChatApi {
   async getChats(): Promise<ChatDTO[] | APIError> {
     return chatApi.get<ChatDTO[]>("");
   }
+
+  async currentChat(id: number): Promise<ChatDTO | APIError> {
+    return chatApi.get<ChatDTO>(`/${id}/users`);
+  }
+
+  async addUser(): Promise<void | APIError> {
+    return chatApi.get<void>(`/users`);
+  }
 }

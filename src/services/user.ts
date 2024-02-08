@@ -29,4 +29,12 @@ const changePassword = async (data: UpdatePassword) => {
   }
 };
 
-export { update, updateAvatar, changePassword };
+const findUser = async (login: string) => {
+  const response = await userApi.find(login);
+  if (apiHasError(response)) {
+    return response.reason;
+  }
+  return response;
+};
+
+export { update, updateAvatar, changePassword, findUser };

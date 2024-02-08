@@ -1,16 +1,13 @@
 import Block from "#core/Block/Block";
-import { router } from "src/main";
-import { ChatType, PagesUrls } from "#types/types";
+import { ChatType } from "#types/types";
+import { getChatData } from "#services/chat";
 
 export class Chat extends Block {
   constructor(props: ChatType) {
     super({
       ...props,
-      onChatChoose: () => {
-        router.go(PagesUrls.ChatPage);
-        const chatWindow = <HTMLDivElement>document.getElementById("chat-window");
-        chatWindow.scroll({ behavior: "smooth", top: chatWindow.scrollHeight });
-        // behavior - только для наглядности пока один чат на всех
+      onChatChoose: async () => {
+        await getChatData(this.props.id);
       },
     });
   }
@@ -27,10 +24,18 @@ export class Chat extends Block {
     return `
     <div class="chat" id="${id}">
     <div class="chatUser">
-        ${img ? `<img class="chatImg" src="${img}" alt="chat">` : '<div class="mock"></div>'}
+        ${
+          img
+            ? `<img class="chatImg" src="${img}" alt="chat">`
+            : '<div class="mock"></div>'
+        }
         <div class="chatMiddle">
             <span class="chatTitle">${title}</span>
-            ${lastMessage ? `<div class="chatLast">${lastMessage.message}</div>` : "Нет сообщений"}
+            ${
+              lastMessage
+                ? `<div class="chatLast">${lastMessage.message}</div>`
+                : "Нет сообщений"
+            }
         </div>
     </div>
     <div class="chatLeft">
